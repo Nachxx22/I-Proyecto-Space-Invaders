@@ -1,5 +1,6 @@
 package Objects;
 import DataStructures.List;
+
 public class InvaderRow {
     private List<Invader> enemies;
     private int posX, posY, speed;

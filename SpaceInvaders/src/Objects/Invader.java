@@ -4,11 +4,6 @@ import java.awt.Graphics2D;
 
 import DataStructures.SimpleLinkedList;
 
-/**
- * This class creates an enemy to be added in the enemy line.
- * @author Victor Castrillo
- *
- */
 public class Invader extends MoveObject implements Drawable {
 
     private int resistance;
