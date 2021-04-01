@@ -5,7 +5,7 @@ import java.awt.Graphics2D;
 import DataStructures.SimpleLinkedList;
 
 public class Invader extends MoveObject implements Drawable {
-
+    private SimpleLinkedList<Bullet> bullets;
     private int resistance;
     private boolean boss;
 
@@ -26,7 +26,10 @@ public class Invader extends MoveObject implements Drawable {
         this.setImage("Boss_1");
         this.setWidth(100);
         this.setHeight(75);
+
     }
+    public SimpleLinkedList<Bullet> getBullets() {
+        return bullets;}
     public int getResistance() {
         return resistance;
     }

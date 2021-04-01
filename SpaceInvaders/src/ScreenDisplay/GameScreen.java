@@ -169,7 +169,7 @@ public class GameScreen extends SuperStateMachine implements KeyListener {
                 }
             }
         }
-        level.getCurrent().arrangeLine();
+        level.getCurrent().arrangeRow();
         // Loop to destroy the player
         for(int e = 0; e < level.getCurrent().getEnemies().length(); e++) {
             for(int eb = 0; eb < level.getCurrent().getEnemies().get(e).getBullets().length
@@ -222,7 +222,7 @@ public class GameScreen extends SuperStateMachine implements KeyListener {
         canvas.addKeyListener(player);
         canvas.addKeyListener(this);
     }
-/*
+
     @Override
     public void keyPressed(KeyEvent e) {
         int key = e.getKeyCode();

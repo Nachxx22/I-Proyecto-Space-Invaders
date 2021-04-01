@@ -3,12 +3,14 @@ package Objects;
 import DataStructures.SimpleLinkedList;
 import Objects.InvaderRow;
 import Objects.GameObject;
+import State_Machine.Timer;
 
 import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-public class Player extends MoveableObject implements KeyListener, Drawable {
+public class Player extends MoveObject implements KeyListener, Drawable {
+	private final Timer timer;
 	private boolean right, left, shoot, alive;
 	private int cooldown, lifes;
 	//private Timer timer;
@@ -26,15 +28,15 @@ public class Player extends MoveableObject implements KeyListener, Drawable {
 		
 		this.bullets = new SimpleLinkedList<Bullet>();
 		
-		//this.timer = new Timer();
+		this.timer = new Timer();
 	}
 	
 	public void shoot() {
 		if(timer.timerEvent(cooldown)) {
 			Bullet bullet = new Bullet(this.getPosX()+22, this.getPosY()-30, 10, 30, -6, "MissileSprite");
 			bullets.add(bullet);
-		}
-	}
+		}}
+	
 	
 	public SimpleLinkedList<Bullet> getBullets() {
 		return bullets;
@@ -59,14 +61,14 @@ public class Player extends MoveableObject implements KeyListener, Drawable {
 	@ Override
 	public void draw(Graphics2D g) {
 		g.drawImage(this.getSprite(), this.getPosX(), this.getPosY(), this.getWidth(), this.getHeight(), null);
-		for(int r = 0; r < bullets.size(); r++) {
+		for(int r = 0; r < bullets.length(); r++) {
 			bullets.get(r).draw(g);
 		}
 	}
 	
 	@ Override
 	public void update(double delta) {
-		for(int r = 0; r < bullets.size(); r++) {
+		for(int r = 0; r < bullets.length(); r++) {
 			bullets.get(r).update(delta);
 		}
 		
