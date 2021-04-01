@@ -1,7 +1,9 @@
 package Objects;
 import DataStructures.List;
 
-public class InvaderRow {
+import java.awt.*;
+
+public abstract class InvaderRow implements Drawable{
     private List<Invader> enemies;
     private int posX, posY, speed;
     private String lineClass;
@@ -72,4 +74,6 @@ public class InvaderRow {
             this.getEnemies().get(i).setPosX(Dist + this.getEnemies().get(i).getPosX());
         }
     }
+
+
 }
