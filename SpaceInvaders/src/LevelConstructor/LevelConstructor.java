@@ -4,6 +4,8 @@ import Objects.Basic;
 import Objects.Drawable;
 import Objects.InvaderRow;
 import java.awt.Graphics2D;
+import java.util.Random;
+
 public class LevelConstructor implements Drawable {
         private InvaderRow current;
         private InvaderRow next;
@@ -17,7 +19,8 @@ public class LevelConstructor implements Drawable {
         }
 
         public InvaderRow createNewLine() {
-
+            Random rand = new Random();
+            int index = rand.nextInt(6);
             int size = 6;
             ++lineCounter;
 

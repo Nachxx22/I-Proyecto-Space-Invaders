@@ -7,4 +7,5 @@ public interface List <Type> {
     public int length();
     public void clear();
     public void swap(int index1, int index2);
+
 }
