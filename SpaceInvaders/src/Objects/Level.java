@@ -10,7 +10,7 @@ public class Level implements Drawable {
 	private int speed, lvl;
 	
 	public Level(int lvl) {
-		current = this.createNewLine();
+		current = new Basic(280*3/2, -60, 1, 7, lvl);
 		next = this.createNewLine();
 		speed = 0;
 		this.lvl = lvl;

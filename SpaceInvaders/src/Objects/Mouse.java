@@ -1,7 +1,8 @@
 package Objects;
-
-import javax.swing.*;
-import java.awt.*;
+import java.awt.Canvas;
+import java.awt.MouseInfo;
+import java.awt.Point;
+import javax.swing.SwingUtilities;
 
 public class Mouse {
     private Canvas cursor;

@@ -1,6 +1,6 @@
 package Objects;
 
-import java.awt.*;
+import java.awt.Rectangle;
 
 
 public abstract class Moveable extends GameObject {
