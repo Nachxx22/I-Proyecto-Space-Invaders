@@ -4,7 +4,10 @@ import java.awt.Graphics2D;
 
 import DataStructures.LinkedList;
 
-
+/***
+ *
+ *
+ */
 public class Basic extends InvaderLine implements Drawable {
 	public Basic(int posX, int posY, int speed, int size, int lvl) {
 		super(posX, posY, speed, size, lvl);
@@ -21,14 +24,23 @@ public class Basic extends InvaderLine implements Drawable {
 		}
 		this.setLineClass("Basic");
 	}
-	
+
+	/***
+	 *
+	 *
+	 * @param g
+	 */
 	@ Override
 	public void draw(Graphics2D g) {
 		for(int c = 0; c < this.getEnemies().size(); c++) {
 			this.getEnemies().get(c).draw(g);
 		}
 	}
-	
+
+	/***
+	 *
+	 * @param delta
+	 */
 	@ Override
 	public void update(double delta) {
 		for(int c = 0; c < this.getEnemies().size(); c++) {

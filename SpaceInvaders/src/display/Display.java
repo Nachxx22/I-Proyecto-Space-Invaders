@@ -7,7 +7,9 @@ import java.awt.image.BufferStrategy;
 import javax.swing.JFrame;
 
 
-
+/**
+ *
+ */
 public class Display extends Canvas implements Runnable {
 	private static final long serialVersionUID = 1L;
 	private final int WIDTH = 280, HEIGHT = 200, SCALE = 3;
@@ -19,6 +21,9 @@ public class Display extends Canvas implements Runnable {
 	private static StateMachine state;
 	private JFrame frame;
 
+	/**
+	 *
+	 */
 	public Display() {
 		this.setSize(WIDTH*SCALE, HEIGHT*SCALE);
 		this.setFocusable(true);
@@ -27,20 +32,35 @@ public class Display extends Canvas implements Runnable {
 		state.setState((byte) 0);
 	}
 
+	/**
+	 *
+	 * @return
+	 */
 	public JFrame getFrame() {
 		return frame;
 	}
 
+	/**
+	 *
+	 * @param frame
+	 */
 	public void setFrame(JFrame frame) {
 		this.frame = frame;
 	}
 
+	/**
+	 *
+	 */
 	public void toGame() {
 		this.setSize(WIDTH*SCALE + 275, HEIGHT*SCALE);
 		this.getFrame().pack();
 		state.setState((byte) 1);
 	}
 
+	/**
+	 *
+	 * @param args
+	 */
 	public static void main(String args[]) {
 		Display display = new Display();
 		JFrame frame = new JFrame();
@@ -56,6 +76,10 @@ public class Display extends Canvas implements Runnable {
 		display.start();
 	}
 
+	/**
+	 *
+	 * @param bs
+	 */
 	public void draw(BufferStrategy bs) {
 		do {
 			do {
@@ -69,10 +93,17 @@ public class Display extends Canvas implements Runnable {
 		} while(bs.contentsLost());
 	}
 
+	/**
+	 *
+	 * @param delta
+	 */
 	public void update(double delta) {
 		state.update(delta);
 	}
 
+	/**
+	 *
+	 */
 	public synchronized void start() {
 		if(running)
 			return;
@@ -82,6 +113,9 @@ public class Display extends Canvas implements Runnable {
 		thread.start();
 	}
 
+	/**
+	 *
+	 */
 	public synchronized void stop() {
 		if(!running)
 			return;
@@ -92,6 +126,9 @@ public class Display extends Canvas implements Runnable {
 		} catch(InterruptedException e) {e.printStackTrace();}
 	}
 
+	/**
+	 *
+	 */
 	@Override
 	public void run() {
 		long timer = System.currentTimeMillis();
