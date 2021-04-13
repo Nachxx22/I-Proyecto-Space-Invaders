@@ -13,7 +13,9 @@ import java.net.URL;
 import javax.imageio.ImageIO;
 
 
-
+/**
+ *
+ */
 public class Menu extends SuperStateMachine implements KeyListener {
 	private Font titleFont = new Font("Impact", Font.PLAIN, 64);
 	private Font startFont = new Font("Impact", Font.PLAIN, 32);
@@ -22,6 +24,10 @@ public class Menu extends SuperStateMachine implements KeyListener {
 	
 	private BufferedImage bg;
 
+	/**
+	 *
+	 * @param stateMachine
+	 */
 	public Menu(StateMachine stateMachine) {
 		super(stateMachine);
 		
@@ -31,6 +37,10 @@ public class Menu extends SuperStateMachine implements KeyListener {
 		} catch(IOException e) {e.printStackTrace();}
 	}
 
+	/**
+	 *
+	 * @param g
+	 */
 	@Override
 	public void draw(Graphics2D g) {
 		g.drawImage(bg, 0, 0, 280*3, 200*3+10, null);
@@ -48,14 +58,26 @@ public class Menu extends SuperStateMachine implements KeyListener {
 		g.drawString(start, (280*3/2)-(startWidth/2), 500);
 	}
 
+	/**
+	 *
+	 * @param delta
+	 */
 	@Override
 	public void update(double delta) {}
 
+	/**
+	 *
+	 * @param canvas
+	 */
 	@Override
 	public void init(Canvas canvas) {
 		canvas.addKeyListener(this);
 	}
 
+	/**
+	 *
+	 * @param e
+	 */
 	@Override
 	public void keyPressed(KeyEvent e) {
 		int key = e.getKeyCode();
@@ -64,9 +86,17 @@ public class Menu extends SuperStateMachine implements KeyListener {
 		}
 	}
 
+	/**
+	 *
+	 * @param e
+	 */
 	@Override
 	public void keyReleased(KeyEvent e) {}
 
+	/**
+	 *
+	 * @param e
+	 */
 	@Override
 	public void keyTyped(KeyEvent e) {}
 }

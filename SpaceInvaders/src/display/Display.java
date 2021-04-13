@@ -8,7 +8,7 @@ import javax.swing.JFrame;
 
 
 /**
- *
+ *Clase display: Clase que crea el jframe y crea una ventana de ciertas dimensiones
  */
 public class Display extends Canvas implements Runnable {
 	private static final long serialVersionUID = 1L;
@@ -22,7 +22,7 @@ public class Display extends Canvas implements Runnable {
 	private JFrame frame;
 
 	/**
-	 *
+	 *Display: Implementa el statemachine y empieza el juego.
 	 */
 	public Display() {
 		this.setSize(WIDTH*SCALE, HEIGHT*SCALE);
@@ -33,15 +33,15 @@ public class Display extends Canvas implements Runnable {
 	}
 
 	/**
-	 *
-	 * @return
+	 *Metodo JFrame: es un metodo get de JFrame
+	 * @return frame
 	 */
 	public JFrame getFrame() {
 		return frame;
 	}
 
 	/**
-	 *
+	 *Metodo JFrame: es un metodo set de JFrame
 	 * @param frame
 	 */
 	public void setFrame(JFrame frame) {
@@ -49,7 +49,7 @@ public class Display extends Canvas implements Runnable {
 	}
 
 	/**
-	 *
+	 *Metodo para cambiar al inicio del juego
 	 */
 	public void toGame() {
 		this.setSize(WIDTH*SCALE + 275, HEIGHT*SCALE);
@@ -58,7 +58,7 @@ public class Display extends Canvas implements Runnable {
 	}
 
 	/**
-	 *
+	 *Main del proyecto, Aqui se establece el Javaframe
 	 * @param args
 	 */
 	public static void main(String args[]) {
@@ -77,7 +77,7 @@ public class Display extends Canvas implements Runnable {
 	}
 
 	/**
-	 *
+	 *Metodo draw: mediante el state y utilizando graphics2D llama a otros metodos para empezar a crear objetos.
 	 * @param bs
 	 */
 	public void draw(BufferStrategy bs) {
@@ -94,7 +94,7 @@ public class Display extends Canvas implements Runnable {
 	}
 
 	/**
-	 *
+	 *Metodo Update: Actualiza la ventana mediante states.
 	 * @param delta
 	 */
 	public void update(double delta) {
@@ -102,7 +102,7 @@ public class Display extends Canvas implements Runnable {
 	}
 
 	/**
-	 *
+	 *Metodo que clasifica el juego para que comience
 	 */
 	public synchronized void start() {
 		if(running)
@@ -114,7 +114,7 @@ public class Display extends Canvas implements Runnable {
 	}
 
 	/**
-	 *
+	 *Metodo que para el juego
 	 */
 	public synchronized void stop() {
 		if(!running)
@@ -127,7 +127,7 @@ public class Display extends Canvas implements Runnable {
 	}
 
 	/**
-	 *
+	 *Metodo Run: Hace que el juego corre detras del programa.
 	 */
 	@Override
 	public void run() {

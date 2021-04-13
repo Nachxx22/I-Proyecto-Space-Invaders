@@ -16,6 +16,9 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import Objects.Mouse;
 
+/***
+ *
+ */
 public class Game extends SuperStateMachine implements KeyListener, MouseListener {
 	private Player player;
 	private Level level;
@@ -25,7 +28,10 @@ public class Game extends SuperStateMachine implements KeyListener, MouseListene
 	private Font GMFont = new Font("Impact", Font.PLAIN, 28);
 	private Mouse pointer;
 
-
+	/**
+	 *
+	 * @param stateMachine
+	 */
 	public Game(StateMachine stateMachine) {
 		super(stateMachine);
 		player =  Player.getInstance();
@@ -42,7 +48,9 @@ public class Game extends SuperStateMachine implements KeyListener, MouseListene
 	}
 
 
-
+	/**
+	 *
+	 */
 	public void reset() {
 		level = new Level(1);
 		player =  Player.getInstance();
@@ -50,6 +58,10 @@ public class Game extends SuperStateMachine implements KeyListener, MouseListene
 		score = 0;
 	}
 
+	/**
+	 *
+	 * @param g
+	 */
 	public void gameOver(Graphics2D g) {
 		g.setColor(Color.black);
 		g.fillRect(0, 0, 350*3+10, 200*3+10);
@@ -67,7 +79,10 @@ public class Game extends SuperStateMachine implements KeyListener, MouseListene
 	}
 
 
-
+	/**
+	 *
+	 * @param g
+	 */
 	public void showInfo(Graphics2D g) {
 		g.setFont(GMFont);
 		g.setColor(Color.white);
@@ -84,14 +99,26 @@ public class Game extends SuperStateMachine implements KeyListener, MouseListene
 		}
 	}
 
+	/**
+	 *
+	 * @return
+	 */
 	public Player getPlayer() {
 		return player;
 	}
 
+	/**
+	 *
+	 * @return
+	 */
 	public Level getLevel() {
 		return level;
 	}
 
+	/**
+	 *
+	 * @param g
+	 */
 	@Override
 	public void draw(Graphics2D g) {
 		if(!this.player.isAlive()) {
@@ -107,6 +134,10 @@ public class Game extends SuperStateMachine implements KeyListener, MouseListene
 		level.draw(g);
 	}
 
+	/**
+	 *
+	 * @param delta
+	 */
 	@Override
 	public void update(double delta) {
 		if(!player.isAlive()) {
@@ -184,6 +215,10 @@ public class Game extends SuperStateMachine implements KeyListener, MouseListene
 		level.update(delta);
 	}
 
+	/**
+	 *
+	 * @param canvas
+	 */
 	@Override
 	public void init(Canvas canvas) {
 		canvas.addMouseListener(player);
@@ -191,6 +226,10 @@ public class Game extends SuperStateMachine implements KeyListener, MouseListene
 		canvas.addKeyListener(this);
 	}
 
+	/**
+	 *
+	 * @param e
+	 */
 	@Override
 	public void keyPressed(KeyEvent e) {
 		int key = e.getKeyCode();
@@ -202,30 +241,58 @@ public class Game extends SuperStateMachine implements KeyListener, MouseListene
 		}
 	}
 
+	/**
+	 *
+	 * @param e
+	 */
 	@Override
 	public void keyReleased(KeyEvent e) {}
 
+	/**
+	 *
+	 * @param e
+	 */
 	@Override
 	public void keyTyped(KeyEvent e) {}
 
+	/**
+	 *
+	 * @param e
+	 */
 	@Override
 	public void mouseClicked(MouseEvent e) {
 	}
+
+	/**
+	 *
+	 * @param e
+	 */
 	@Override
 	public void mousePressed(MouseEvent e) {
 
 	}
 
-
+	/**
+	 *
+	 * @param e
+	 */
 	@Override
 	public void mouseReleased(MouseEvent e) {
 
 	}
 
+	/**
+	 *
+	 * @param e
+	 */
 	@Override
 	public void mouseEntered(MouseEvent e) {
 	}
 
+	/**
+	 *
+	 * @param e
+	 */
 	@Override
 	public void mouseExited(MouseEvent e) {
 	}
