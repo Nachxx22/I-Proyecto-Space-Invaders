@@ -38,7 +38,7 @@ public class ClassB extends InvaderLine implements Drawable {
 				this.getEnemies().get(c).draw(g);
 			}
 		} catch(Exception e) {
-//			this.draw(g);
+			this.draw(g);
 		}
 	}
 	
