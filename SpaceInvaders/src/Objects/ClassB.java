@@ -38,23 +38,23 @@ public class ClassB extends InvaderLine implements Drawable {
 				this.getEnemies().get(c).draw(g);
 			}
 		} catch(Exception e) {
-			this.draw(g);
+//			this.draw(g);
 		}
 	}
 	
 	@ Override
 	public void update(double delta) {
 		this.setHaveBoss(false);
-		for(int c = 0; c < this.getEnemies().size(); c++) {
-			this.getEnemies().get(c).setPosY(this.getEnemies().get(c).getPosY()+this.getSpeed());
-			this.getEnemies().get(c).update(delta);
-			if(this.getEnemies().get(c).isBoss()) {
+		for(int i = 0; i < this.getEnemies().size(); i++) {
+			this.getEnemies().get(i).setPosY(this.getEnemies().get(i).getPosY()+this.getSpeed());
+			this.getEnemies().get(i).update(delta);
+			if(this.getEnemies().get(i).isBoss()) {
 				this.setHaveBoss(true);
 			}
 		}
 
 
-		if(this.getTimer().timerEvent(2000)) {
+		if(this.getTimer().timerEvent(500)) {
 			if (change && this.getEnemies().size() > 2) {
 				Random rand = new Random();
 				int newPos = rand.nextInt(this.getEnemies().size() - 1);
