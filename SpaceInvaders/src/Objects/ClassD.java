@@ -23,7 +23,7 @@ public class ClassD extends InvaderLine implements Drawable {
 		this.setLineClass("ClassD");
 	}
 
-	public void orderLine() {
+	private void BubleSort() {
 		boolean changed = false;
 		int index = 0;
 		while(index < this.getEnemies().size()-1) {
@@ -34,7 +34,7 @@ public class ClassD extends InvaderLine implements Drawable {
 			++index;
 		}
 		if(changed) {
-			this.orderLine();
+			this.BubleSort();
 		}
 	}
 
@@ -63,7 +63,7 @@ public class ClassD extends InvaderLine implements Drawable {
 			this.getEnemies().get(0).setBoss();
 		}
 		if(this.getEnemies().size() > 1) {
-			this.orderLine();
+			this.BubleSort();
 		}
 		this.arrangeLine();
 

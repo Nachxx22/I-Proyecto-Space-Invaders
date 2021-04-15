@@ -9,6 +9,8 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URL;
 import javax.imageio.ImageIO;
+
+import Objects.Audio;
 import Objects.Level;
 import Objects.Player;
 
@@ -27,6 +29,9 @@ public class Game extends SuperStateMachine implements KeyListener, MouseListene
 	private BufferedImage bg;
 	private Font GMFont = new Font("Impact", Font.PLAIN, 28);
 	private Mouse pointer;
+	public Audio BatM;
+	private int setA=0;
+	public boolean playM= true;
 
 	/**
 	 *
@@ -63,6 +68,7 @@ public class Game extends SuperStateMachine implements KeyListener, MouseListene
 	 * @param g
 	 */
 	public void gameOver(Graphics2D g) {
+		BatM.Stop();
 		g.setColor(Color.black);
 		g.fillRect(0, 0, 350*3+10, 200*3+10);
 		BufferedImage go = null;
@@ -75,7 +81,11 @@ public class Game extends SuperStateMachine implements KeyListener, MouseListene
 		g.setFont(GMFont);
 		g.setColor(Color.white);
 		g.drawString(Integer.toString(score), (280*3+10)/2-g.getFontMetrics().stringWidth(Integer.toString(score))/2, 500);
+		if (setA==0){
+			++setA;
+			Audio loss = new Audio("SpaceInvaders/Tracks/GameOver.wav");
 
+		}
 	}
 
 
@@ -121,18 +131,20 @@ public class Game extends SuperStateMachine implements KeyListener, MouseListene
 	 */
 	@Override
 	public void draw(Graphics2D g) {
-		if(!this.player.isAlive()) {
-			this.gameOver(g);
-			return;
+
+			if(!this.player.isAlive()) {
+				this.gameOver(g);
+				return;
+			}
+
+			g.drawImage(bg, 0, 0, 280*3+10, 200*3+10, null);
+			g.setColor(Color.gray);
+			g.fillRect(280*3+10, 0, 350*3-280*3, 200*3+10);
+			this.showInfo(g);
+			player.draw(g);
+			level.draw(g);
 		}
 
-		g.drawImage(bg, 0, 0, 280*3+10, 200*3+10, null);
-		g.setColor(Color.gray);
-		g.fillRect(280*3+10, 0, 350*3-280*3, 200*3+10);
-		this.showInfo(g);
-		player.draw(g);
-		level.draw(g);
-	}
 
 	/**
 	 *
@@ -140,6 +152,9 @@ public class Game extends SuperStateMachine implements KeyListener, MouseListene
 	 */
 	@Override
 	public void update(double delta) {
+		if(playM){
+			BatM = new Audio("SpaceInvaders/Tracks/Tank!.wav");
+			playM = false;}
 		if(!player.isAlive()) {
 			return;
 		}
@@ -151,19 +166,24 @@ public class Game extends SuperStateMachine implements KeyListener, MouseListene
 		for(int i = 0; i < level.getCurrent().getEnemies().size(); i++) {
 			int b = 0;
 			if(level.getCurrent().getEnemies().get(i).getPosY() >= 600 - level.getCurrent().getEnemies().get(i).getHeight()) {
+
 				while(player.isAlive()) {
 					player.loseLife();
+
 				}
+
 				return;
 			}
 			while(b < player.getBullets().size()) {
 				if(player.getBullets().get(b).isColliding(level.getCurrent().getEnemies().get(i))) {
 					player.getBullets().remove(b);
 					if(level.getCurrent().getEnemies().get(i).destroy()) {
+						Audio exp = new Audio("SpaceInvaders/Tracks/explosion.wav");
 						if(level.getCurrent().getEnemies().get(i).isBoss()) {
 							this.score += 500;
 						} else {
 							this.score += 100;
+
 						}
 						level.getCurrent().getEnemies().remove(i);
 						if(level.getCurrent().getEnemies().size() == 0) {
@@ -234,6 +254,7 @@ public class Game extends SuperStateMachine implements KeyListener, MouseListene
 	public void keyPressed(KeyEvent e) {
 		int key = e.getKeyCode();
 		if(key == KeyEvent.VK_ESCAPE) {
+			BatM.Stop();
 			this.reset();
 			this.getStateMachine().setState((byte) 0);
 		} else if(key == KeyEvent.VK_P) {

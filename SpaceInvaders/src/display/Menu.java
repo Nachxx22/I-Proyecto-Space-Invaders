@@ -1,5 +1,7 @@
 package display;
 
+import Objects.Audio;
+
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Font;
@@ -9,6 +11,7 @@ import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URL;
+
 
 import javax.imageio.ImageIO;
 
@@ -21,8 +24,10 @@ public class Menu extends SuperStateMachine implements KeyListener {
 	private Font startFont = new Font("Impact", Font.PLAIN, 32);
 	private String title = "Space Invaders";
 	private String start = "Press Enter";
+	private Audio BackG;
 	
 	private BufferedImage bg;
+
 
 	/**
 	 *
@@ -33,6 +38,7 @@ public class Menu extends SuperStateMachine implements KeyListener {
 		
 		try {
 			URL url = this.getClass().getResource("/Sprites/Background.png");
+			BackG = new Audio("SpaceInvaders/Tracks/Menu.wav");
 			bg = ImageIO.read(url);
 		} catch(IOException e) {e.printStackTrace();}
 	}
@@ -55,7 +61,7 @@ public class Menu extends SuperStateMachine implements KeyListener {
 		g.setFont(startFont);
 		int startWidth = g.getFontMetrics().stringWidth(title);
 		g.setColor(Color.white);
-		g.drawString(start, (280*3/2)-(startWidth/2), 500);
+		g.drawString(start, (280*3/2)-(startWidth/2)+30, 500);
 	}
 
 	/**
@@ -83,6 +89,7 @@ public class Menu extends SuperStateMachine implements KeyListener {
 		int key = e.getKeyCode();
 		if(key == KeyEvent.VK_ENTER) {
 			this.getStateMachine().setState((byte) 1);
+			BackG.Stop();
 		}
 	}
 

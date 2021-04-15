@@ -1,7 +1,7 @@
 package Objects;
 
 import DataStructures.List;
-	import display.Timer;
+import display.Timer;
 
 public abstract class InvaderLine implements Drawable {
 	private List<Invader> enemies;

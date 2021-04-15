@@ -37,8 +37,9 @@ public class Player extends Moveable implements MouseListener, Drawable {
 	
 	public void shoot() {
 		if(timer.timerEvent(cooldown)) {
-			Bullet bullet = new Bullet(this.getPosX()+9, this.getPosY()-40, 45, 45, -20, "MissileSprite");
+			Bullet bullet = new Bullet(this.getPosX()+9, this.getPosY()-50, 45, 45, -20, "MissileSprite");
 			bullets.add(bullet);
+			Audio audio = new Audio("SpaceInvaders/Tracks/laser.wav");
 		}
 	}
 	
@@ -51,6 +52,10 @@ public class Player extends Moveable implements MouseListener, Drawable {
 	}
 	
 	public void loseLife() {
+		Audio hit = new Audio("SpaceInvaders/Tracks/damage.wav");
+		if (lifes<=2){
+			Audio hurt = new Audio("SpaceInvaders/Tracks/heartbeats.wav");
+		}
 		if(lifes >= 1) {
 			--lifes;
 		} else if(lifes == 0) {
