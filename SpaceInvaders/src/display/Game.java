@@ -29,7 +29,6 @@ public class Game extends SuperStateMachine implements KeyListener, MouseListene
 	private BufferedImage bg;
 	private Font GMFont = new Font("Impact", Font.PLAIN, 28);
 	private Mouse pointer;
-	public Audio BatM;
 	private int setA=0;
 	public boolean playM= true;
 
@@ -68,7 +67,7 @@ public class Game extends SuperStateMachine implements KeyListener, MouseListene
 	 * @param g
 	 */
 	public void gameOver(Graphics2D g) {
-		BatM.Stop();
+		this.getStateMachine().StopM();
 		g.setColor(Color.black);
 		g.fillRect(0, 0, 350*3+10, 200*3+10);
 		BufferedImage go = null;
@@ -153,7 +152,6 @@ public class Game extends SuperStateMachine implements KeyListener, MouseListene
 	@Override
 	public void update(double delta) {
 		if(playM){
-			BatM = new Audio("SpaceInvaders/Tracks/Tank!.wav");
 			playM = false;}
 		if(!player.isAlive()) {
 			return;
@@ -254,11 +252,8 @@ public class Game extends SuperStateMachine implements KeyListener, MouseListene
 	public void keyPressed(KeyEvent e) {
 		int key = e.getKeyCode();
 		if(key == KeyEvent.VK_ESCAPE) {
-			BatM.Stop();
 			this.reset();
 			this.getStateMachine().setState((byte) 0);
-		} else if(key == KeyEvent.VK_P) {
-			this.getStateMachine().setState((byte) 2);
 		}
 	}
 

@@ -3,14 +3,14 @@ package Objects;
 import java.awt.Graphics2D;
 
 
-import DataStructures.LinkedList;
+import DataStructures.SimplyLinkedList;
 
 
 public class ClassA extends InvaderLine implements Drawable {
     public ClassA(int posX, int posY, int speed, int size, int lvl) {
         super(posX, posY, speed, size, lvl);
         int counter = 0;
-        this.setEnemies(new LinkedList<Invader>());
+        this.setEnemies(new SimplyLinkedList<Invader>());
         while(counter < size) {
 
             String sprite = "Invader_1";

@@ -4,7 +4,7 @@ import java.awt.Graphics2D;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-import DataStructures.LinkedList;
+import DataStructures.SimplyLinkedList;
 import display.Timer;
 
 
@@ -14,7 +14,7 @@ public class Player extends Moveable implements MouseListener, Drawable {
 	private int cooldown, lifes;
 	private Timer timer;
 	
-	private LinkedList<Bullet> bullets ;
+	private SimplyLinkedList<Bullet> bullets ;
 
 	private Player(int posX, int posY, int width, int height, String spriteName) {
 		super(posX, posY, width, height, 7, spriteName);
@@ -24,7 +24,7 @@ public class Player extends Moveable implements MouseListener, Drawable {
 		this.cooldown = 500;
 		this.lifes = 5;
 		
-		this.bullets = new LinkedList<Bullet>();
+		this.bullets = new SimplyLinkedList<Bullet>();
 		
 		this.timer = new Timer();
 	}
@@ -43,7 +43,7 @@ public class Player extends Moveable implements MouseListener, Drawable {
 		}
 	}
 	
-	public LinkedList<Bullet> getBullets() {
+	public SimplyLinkedList<Bullet> getBullets() {
 		return bullets;
 	}
 	

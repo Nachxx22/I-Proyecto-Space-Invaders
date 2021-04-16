@@ -3,15 +3,17 @@ package display;
 import java.awt.Canvas;
 import java.awt.Graphics2D;
 
-import DataStructures.LinkedList;
+import DataStructures.SimplyLinkedList;
+import Objects.Audio;
 
 /**
  *
  */
 public class StateMachine {
 	private Canvas canvas;
-	private LinkedList<SuperStateMachine> states = new LinkedList<SuperStateMachine>();
+	private SimplyLinkedList<SuperStateMachine> states = new SimplyLinkedList<SuperStateMachine>();
 	private byte selectState;
+	private Audio BackG,BackM;
 
 	/**
 	 *
@@ -48,12 +50,28 @@ public class StateMachine {
 	 * @param i
 	 */
 	public void setState(byte i) {
+		if(i == 0){
+			if (BackM != null){
+				BackM.Stop();
+			}
+			BackG = new Audio("SpaceInvaders/Tracks/Menu.wav");
+
+		}
+		if (i == 1){
+			BackM = new Audio("SpaceInvaders/Tracks/Tank!.wav");
+			if (BackG != null){
+				BackG.Stop();
+			}
+
+		}
 		for(int r = 0; r < canvas.getKeyListeners().length; r++)
 			canvas.removeKeyListener(canvas.getKeyListeners()[r]);
 		selectState = i;
 		states.get(selectState).init(canvas);
 	}
-
+	public void StopM(){
+		BackM.Stop();
+	}
 	/**
 	 *
 	 * @return

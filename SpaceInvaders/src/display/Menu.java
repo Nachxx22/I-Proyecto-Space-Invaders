@@ -24,7 +24,7 @@ public class Menu extends SuperStateMachine implements KeyListener {
 	private Font startFont = new Font("Impact", Font.PLAIN, 32);
 	private String title = "Space Invaders";
 	private String start = "Press Enter";
-	private Audio BackG;
+
 	
 	private BufferedImage bg;
 
@@ -38,7 +38,6 @@ public class Menu extends SuperStateMachine implements KeyListener {
 		
 		try {
 			URL url = this.getClass().getResource("/Sprites/Background.png");
-			BackG = new Audio("SpaceInvaders/Tracks/Menu.wav");
 			bg = ImageIO.read(url);
 		} catch(IOException e) {e.printStackTrace();}
 	}
@@ -89,7 +88,7 @@ public class Menu extends SuperStateMachine implements KeyListener {
 		int key = e.getKeyCode();
 		if(key == KeyEvent.VK_ENTER) {
 			this.getStateMachine().setState((byte) 1);
-			BackG.Stop();
+
 		}
 	}
 

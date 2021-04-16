@@ -11,7 +11,7 @@ public class CircleList<Class> implements List<Class> {
 	
 	@Override
 	public void add(Class value) {
-		Node<Class> newNode = new Node<Class>();
+		Node<Class> newNode = new Node<>();
 		newNode.setValue(value);
 		if(head == null) {
 			head = newNode;

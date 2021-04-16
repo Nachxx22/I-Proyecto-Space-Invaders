@@ -27,12 +27,8 @@ public class Timer {
 	public void setPrevTime(long prevTime) {
 		this.prevTime = prevTime;
 	}
-	
-	public boolean isTimerReady(int timer) {
-		if(System.currentTimeMillis()-getPrevTime() > timer) {
-			return true;
-		}
+
+
 		
-		return false;
-	}
+
 }

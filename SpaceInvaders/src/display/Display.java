@@ -48,14 +48,7 @@ public class Display extends Canvas implements Runnable {
 		this.frame = frame;
 	}
 
-	/**
-	 *Metodo para cambiar al inicio del juego
-	 */
-	public void toGame() {
-		this.setSize(WIDTH*SCALE + 275, HEIGHT*SCALE);
-		this.getFrame().pack();
-		state.setState((byte) 1);
-	}
+
 
 	/**
 	 *Main del proyecto, Aqui se establece el Javaframe
