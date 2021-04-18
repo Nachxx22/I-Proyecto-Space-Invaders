@@ -32,13 +32,14 @@ public class Game extends SuperStateMachine implements KeyListener, MouseListene
 	private int setA=0;
 	public boolean playM= true;
 
+
 	/**
 	 *
 	 * @param stateMachine
 	 */
 	public Game(StateMachine stateMachine) {
 		super(stateMachine);
-		player =  Player.getInstance();
+		player =  new Player(280*3/2-25, 360/16*9*3-55, 60, 60, "Spaceship_1");
 		level = new Level(1);
 		levelCounter = 1;
 		score = 0;
@@ -57,11 +58,10 @@ public class Game extends SuperStateMachine implements KeyListener, MouseListene
 	 */
 	public void reset() {
 		level = new Level(1);
-		player =  Player.getInstance();
+		player =  new Player(280*3/2-25, 360/16*9*3-55, 60, 60, "Spaceship_1");
 		levelCounter = 1;
 		score = 0;
 	}
-
 	/**
 	 *
 	 * @param g
@@ -76,7 +76,6 @@ public class Game extends SuperStateMachine implements KeyListener, MouseListene
 			go = ImageIO.read(url);
 		} catch(IOException e) {e.printStackTrace();}
 		g.drawImage(go, (280*3+10)/2-300, 50, go.getWidth(), go.getHeight(), null);
-
 		g.setFont(GMFont);
 		g.setColor(Color.white);
 		g.drawString(Integer.toString(score), (280*3+10)/2-g.getFontMetrics().stringWidth(Integer.toString(score))/2, 500);
@@ -85,6 +84,7 @@ public class Game extends SuperStateMachine implements KeyListener, MouseListene
 			Audio loss = new Audio("SpaceInvaders/Tracks/GameOver.wav");
 
 		}
+
 	}
 
 
@@ -133,6 +133,7 @@ public class Game extends SuperStateMachine implements KeyListener, MouseListene
 
 			if(!this.player.isAlive()) {
 				this.gameOver(g);
+
 				return;
 			}
 
@@ -151,8 +152,6 @@ public class Game extends SuperStateMachine implements KeyListener, MouseListene
 	 */
 	@Override
 	public void update(double delta) {
-		if(playM){
-			playM = false;}
 		if(!player.isAlive()) {
 			return;
 		}

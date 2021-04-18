@@ -51,9 +51,6 @@ public class Level implements Drawable {
 		return speed;
 	}
 
-	public InvaderLine getNext() {
-		return next;
-	}
 
 	@Override
 	public void draw(Graphics2D g) {

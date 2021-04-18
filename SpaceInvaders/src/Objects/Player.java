@@ -16,7 +16,7 @@ public class Player extends Moveable implements MouseListener, Drawable {
 	
 	private SimplyLinkedList<Bullet> bullets ;
 
-	private Player(int posX, int posY, int width, int height, String spriteName) {
+	public Player(int posX, int posY, int width, int height, String spriteName) {
 		super(posX, posY, width, height, 7, spriteName);
 
 		this.shoot = false;
@@ -28,12 +28,7 @@ public class Player extends Moveable implements MouseListener, Drawable {
 		
 		this.timer = new Timer();
 	}
-	public static Player getInstance() {
-		if (instance == null){
-			instance = new Player(280*3/2-25, 360/16*9*3-55, 60, 60, "Spaceship_1");
-		}
-		return instance;
-	}
+
 	
 	public void shoot() {
 		if(timer.timerEvent(cooldown)) {
@@ -50,6 +45,7 @@ public class Player extends Moveable implements MouseListener, Drawable {
 	public int getLifes() {
 		return lifes;
 	}
+
 	
 	public void loseLife() {
 		Audio hit = new Audio("SpaceInvaders/Tracks/damage.wav");
