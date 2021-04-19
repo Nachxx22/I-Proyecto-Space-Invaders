@@ -1,9 +1,8 @@
 package Objects;
 
-import java.awt.Graphics2D;
-
-
 import DataStructures.SimplyLinkedList;
+
+import java.awt.*;
 
 
 public class ClassA extends InvaderLine implements Drawable {
