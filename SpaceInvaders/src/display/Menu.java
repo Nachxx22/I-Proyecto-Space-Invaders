@@ -17,7 +17,7 @@ import javax.imageio.ImageIO;
 
 
 /**
- *
+ *Clase Menu: Extiende a superstatemachine implementa keylistener, crea titulos en la pantalla de menu
  */
 public class Menu extends SuperStateMachine implements KeyListener {
 	private Font titleFont = new Font("Impact", Font.PLAIN, 64);
@@ -30,7 +30,7 @@ public class Menu extends SuperStateMachine implements KeyListener {
 
 
 	/**
-	 *
+	 *Metodo menu:LLama un png con el background
 	 * @param stateMachine
 	 */
 	public Menu(StateMachine stateMachine) {
@@ -43,7 +43,7 @@ public class Menu extends SuperStateMachine implements KeyListener {
 	}
 
 	/**
-	 *
+	 *Metodo Draw: Acomoda los titulos en la pantalla de menu.
 	 * @param g
 	 */
 	@Override
@@ -63,15 +63,11 @@ public class Menu extends SuperStateMachine implements KeyListener {
 		g.drawString(start, (280*3/2)-(startWidth/2)+30, 500);
 	}
 
-	/**
-	 *
-	 * @param delta
-	 */
 	@Override
 	public void update(double delta) {}
 
 	/**
-	 *
+	 *metodo init: obtiene keylistener al canvas.
 	 * @param canvas
 	 */
 	@Override
@@ -80,7 +76,7 @@ public class Menu extends SuperStateMachine implements KeyListener {
 	}
 
 	/**
-	 *
+	 *Metodo keyPressed: graba cuando toca tecla enter, comienza juego.
 	 * @param e
 	 */
 	@Override
@@ -92,17 +88,9 @@ public class Menu extends SuperStateMachine implements KeyListener {
 		}
 	}
 
-	/**
-	 *
-	 * @param e
-	 */
 	@Override
 	public void keyReleased(KeyEvent e) {}
 
-	/**
-	 *
-	 * @param e
-	 */
 	@Override
 	public void keyTyped(KeyEvent e) {}
 }

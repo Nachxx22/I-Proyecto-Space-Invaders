@@ -19,7 +19,7 @@ import java.awt.event.MouseListener;
 import Objects.Mouse;
 
 /***
- *
+ *Class Game: Extiende a superstatemachine e implementa keylistener y mouselistener, Aqui se define todos los objetos.
  */
 public class Game extends SuperStateMachine implements KeyListener, MouseListener {
 	private Player player;
@@ -34,7 +34,7 @@ public class Game extends SuperStateMachine implements KeyListener, MouseListene
 
 
 	/**
-	 *
+	 *metodo Game: Crea un jugador de ciertas dimensiones, llama al sprite y toma en cuenta el nivel, puntuaje, el puntero del mouse.
 	 * @param stateMachine
 	 */
 	public Game(StateMachine stateMachine) {
@@ -54,7 +54,7 @@ public class Game extends SuperStateMachine implements KeyListener, MouseListene
 
 
 	/**
-	 *
+	 *Metodo reset: Reestablece el jugador a su lugar original y contador nivel, tambien el score en 0.
 	 */
 	public void reset() {
 		level = new Level(1);
@@ -63,7 +63,7 @@ public class Game extends SuperStateMachine implements KeyListener, MouseListene
 		score = 0;
 	}
 	/**
-	 *
+	 *Metodo gameOver: Para la maquina de estado, y crea una pantalla de gameover con el score obtenido on diferente musica.
 	 * @param g
 	 */
 	public void gameOver(Graphics2D g) {
@@ -86,10 +86,8 @@ public class Game extends SuperStateMachine implements KeyListener, MouseListene
 		}
 
 	}
-
-
 	/**
-	 *
+	 *Metodo showInfo: Demuestra la informacion del jugador en la pantalla de juego, cantidad de vida restante y la linea de clase que esta.
 	 * @param g
 	 */
 	public void showInfo(Graphics2D g) {
@@ -109,23 +107,23 @@ public class Game extends SuperStateMachine implements KeyListener, MouseListene
 	}
 
 	/**
-	 *
-	 * @return
+	 *Metodo Getplayer
+	 * @return player
 	 */
 	public Player getPlayer() {
 		return player;
 	}
 
 	/**
-	 *
-	 * @return
+	 *Metodo getlevel
+	 * @return level
 	 */
 	public Level getLevel() {
 		return level;
 	}
 
 	/**
-	 *
+	 *Metodo draw: cuando hay gameover se demuestra info de player y level.
 	 * @param g
 	 */
 	@Override
@@ -147,7 +145,7 @@ public class Game extends SuperStateMachine implements KeyListener, MouseListene
 
 
 	/**
-	 *
+	 *Metodo update: Actualiza la pantalla(Destruir enemigos, Destruir balas cuando tocan fuera de pantalla, Obtener colisiones entre jugador y enemigos).
 	 * @param delta
 	 */
 	@Override
@@ -159,7 +157,7 @@ public class Game extends SuperStateMachine implements KeyListener, MouseListene
 			++levelCounter;
 			level = new Level(levelCounter);
 		}
-		// Destroy enemies
+		// Destruir enemigos
 		for(int i = 0; i < level.getCurrent().getEnemies().size(); i++) {
 			int b = 0;
 			if(level.getCurrent().getEnemies().get(i).getPosY() >= 600 - level.getCurrent().getEnemies().get(i).getHeight()) {
@@ -198,7 +196,7 @@ public class Game extends SuperStateMachine implements KeyListener, MouseListene
 
 
 
-		// Destroy bullets out of the screen
+		// Destruir balas cuando tocan fuera de pantalla
 		for(int i = 0; i < player.getBullets().size(); i++) {
 			if(player.getBullets().get(i).getPosY() < -50) {
 				player.getBullets().remove(i);
@@ -208,7 +206,7 @@ public class Game extends SuperStateMachine implements KeyListener, MouseListene
 
 
 
-		// Get collisions between enemies and the player
+		// Obtener colisiones entre jugador y enemigos
 		for(int i = 0; i < level.getCurrent().getEnemies().size(); i++) {
 			if(level.getCurrent().getEnemies().get(i).isColliding(player)) {
 				if(level.getCurrent().getEnemies().get(i).isBoss()) {
@@ -233,7 +231,7 @@ public class Game extends SuperStateMachine implements KeyListener, MouseListene
 	}
 
 	/**
-	 *
+	 *Metodo init(Crea canvas con mouselistener y keylistener).
 	 * @param canvas
 	 */
 	@Override
@@ -244,7 +242,7 @@ public class Game extends SuperStateMachine implements KeyListener, MouseListene
 	}
 
 	/**
-	 *
+	 * Metodo keyPressed: Obtiene cuando se toca la tecla escape, lo cual reinicia el juego
 	 * @param e
 	 */
 	@Override
@@ -256,58 +254,35 @@ public class Game extends SuperStateMachine implements KeyListener, MouseListene
 		}
 	}
 
-	/**
-	 *
-	 * @param e
-	 */
+
 	@Override
 	public void keyReleased(KeyEvent e) {}
 
-	/**
-	 *
-	 * @param e
-	 */
 	@Override
 	public void keyTyped(KeyEvent e) {}
 
-	/**
-	 *
-	 * @param e
-	 */
+
 	@Override
 	public void mouseClicked(MouseEvent e) {
 	}
 
-	/**
-	 *
-	 * @param e
-	 */
+
 	@Override
 	public void mousePressed(MouseEvent e) {
 
 	}
 
-	/**
-	 *
-	 * @param e
-	 */
 	@Override
 	public void mouseReleased(MouseEvent e) {
 
 	}
 
-	/**
-	 *
-	 * @param e
-	 */
+
 	@Override
 	public void mouseEntered(MouseEvent e) {
 	}
 
-	/**
-	 *
-	 * @param e
-	 */
+
 	@Override
 	public void mouseExited(MouseEvent e) {
 	}
