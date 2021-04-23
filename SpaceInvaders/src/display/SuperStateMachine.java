@@ -4,13 +4,13 @@ import java.awt.Canvas;
 import java.awt.Graphics2D;
 
 /**
- *
+ *Clase SuperStateMachine: define statemachine.
  */
 public abstract class SuperStateMachine {
 	private StateMachine stateMachine;
 
 	/**
-	 *
+	 *Metodo SuperStateMachine: Set StateMachine
 	 * @param stateMachine
 	 */
 	public SuperStateMachine(StateMachine stateMachine) {
@@ -18,8 +18,8 @@ public abstract class SuperStateMachine {
 	}
 
 	/**
-	 *
-	 * @return
+	 *Metodo getStateMachine: getea StateMachine.
+	 * @return this.stateMachine
 	 */
 	public StateMachine getStateMachine() {
 		return this.stateMachine;

@@ -1,13 +1,13 @@
 package display;
 
 /**
- *
+ *Clase Timer: define tiempo previo
  */
 public class Timer {
 	private long prevTime;
 
 	/**
-	 *
+	 *Metodo timer:
 	 */
 	public Timer() {
 		prevTime = System.currentTimeMillis();
