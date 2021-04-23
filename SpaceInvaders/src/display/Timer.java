@@ -7,21 +7,21 @@ public class Timer {
 	private long prevTime;
 
 	/**
-	 *Metodo timer:
+	 *Metodo timer: Tiempo previo
 	 */
 	public Timer() {
 		prevTime = System.currentTimeMillis();
 	}
 
 	/**
-	 *
+	 *Metodo para resetear el timer del juego
 	 */
 	public void resetTimer() {
 		prevTime = System.currentTimeMillis();
 	}
 
 	/**
-	 *
+	 *Metodo timer event: inicia el timer
 	 * @param timer
 	 * @return
 	 */
@@ -35,7 +35,7 @@ public class Timer {
 	}
 
 	/**
-	 *
+	 *Getprevtime
 	 * @return
 	 */
 	public long getPrevTime() {
@@ -43,7 +43,7 @@ public class Timer {
 	}
 
 	/**
-	 *
+	 *SetPrevtime
 	 * @param prevTime
 	 */
 	public void setPrevTime(long prevTime) {
