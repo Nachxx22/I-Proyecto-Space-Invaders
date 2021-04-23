@@ -12,7 +12,9 @@ public class DoubleLinkedList<Class> implements List<Class> {
 		head = null;
 		size = 0;
 	}
-	
+/**
+	 *Metodo add: agrega un valor a la lista.
+**/
 	@Override
 	public void add(Class value) {
 		DoubleNode<Class> newNode = new DoubleNode<Class>();
@@ -30,7 +32,9 @@ public class DoubleLinkedList<Class> implements List<Class> {
 		current.setNext(newNode);
 		size++;
 	}
-	
+/**
+	 *Metodo remove: remueve un valor de la lista.
+**/
 	@Override
 	public void remove(int index) {
 		if(index == 0 && index < size) {
@@ -54,7 +58,10 @@ public class DoubleLinkedList<Class> implements List<Class> {
 			return;
 		}
 	}
-	
+
+/**
+	 *Metodo get: retorna un valor de la lista.
+*/
 	@Override
 	public Class get(int index) {
 		if(index > size-1)
@@ -65,18 +72,24 @@ public class DoubleLinkedList<Class> implements List<Class> {
 		}
 		return current.getValue();
 	}
-	
+/**
+	 *Metodo clear: vacia el nodo.
+**/
 	@Override
 	public void clear() {
 		this.head = null;
 		this.size = 0;
 	}
-
+/**
+	 *Metodo size: retorna el tamaño de la lista.
+ * */
 	@Override
 	public int size() {
 		return size;
 	}
-
+/**
+	 *Metodo swap: intercambia los nodos de las listas.
+ **/
 	@Override
 	public void swap(int index1, int index2) {
 		Class d1 = this.get(index1);

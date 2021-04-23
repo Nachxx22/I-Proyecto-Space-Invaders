@@ -12,7 +12,10 @@ public class CircleList<Class> implements List<Class> {
 		head = null;
 		size = 0;
 	}
-	
+
+/**
+	 *Metodo add: agrega un valor a la lista.
+**/
 	@Override
 	public void add(Class value) {
 		Node<Class> newNode = new Node<>();
@@ -31,7 +34,9 @@ public class CircleList<Class> implements List<Class> {
 			++size;
 		}
 	}
-
+/**
+	 *Metodo remove: remueve un valor de la lista.
+*/
 	@Override
 	public void remove(int index) {
 		if(index == 0 && index < size) {
@@ -48,7 +53,9 @@ public class CircleList<Class> implements List<Class> {
 			--size;
 		}
 	}
-
+/**
+	 *Metodo get: retorna un valor de la lista.
+*/
 	@Override
 	public Class get(int index) {
 		Node<Class> current = head;
@@ -57,18 +64,24 @@ public class CircleList<Class> implements List<Class> {
 		}
 		return current.getValue();
 	}
-
+/**
+	 *Metodo size: retorna el tamaño de la lista.
+**/
 	@Override
 	public int size() {
 		return size;
 	}
-	
+/**
+	 *Metodo clear: vacia el nodo.
+**/
 	@Override
 	public void clear() {
 		this.head = null;
 		this.size = 0;
 	}
-	
+/**
+	 *Metodo swap: intercambia los nodos de las listas.
+**/
 	@Override
 	public void swap(int index1, int index2) {
 		Class d1 = this.get(index1);
