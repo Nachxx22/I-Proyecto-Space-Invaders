@@ -50,7 +50,7 @@ public class ClassB extends InvaderLine implements Drawable {
 		}
 
 		if(this.getTimer().timerEvent(500)) {
-			if (change && this.getEnemies().size() > 2) {
+			if (change && this.getEnemies().size() > 1) {
 				Random rand = new Random();
 				int newPos = rand.nextInt(this.getEnemies().size() - 1);
 				this.getEnemies().swap(bossIndex, newPos);

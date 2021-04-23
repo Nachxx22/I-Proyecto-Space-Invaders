@@ -3,6 +3,9 @@ package Objects;
 import java.awt.Graphics2D;
 import java.util.Random;
 
+/**
+ * Construye la base del nivel que se mostrará en pantalla
+ */
 
 public class Level implements Drawable {
 	private InvaderLine current;
@@ -15,7 +18,11 @@ public class Level implements Drawable {
 		speed = 0;
 		this.lvl = lvl;
 	}
-	
+
+	/**
+	 * Crea la clase enemiga a mostrar
+	 * @return
+	 */
 	public InvaderLine createNewLine() {
 		Random rand = new Random();
 		int index = rand.nextInt(6);
@@ -59,6 +66,7 @@ public class Level implements Drawable {
 
 	@Override
 	public void update(double delta) {
+
 		if((current.getLineClass() == "ClassA" || current.getLineClass() == "ClassB" || current.getLineClass() == "ClassE") && !current.isHaveBoss()) {
 			this.nextLine();
 			return;
