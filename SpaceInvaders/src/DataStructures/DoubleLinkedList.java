@@ -73,7 +73,7 @@ public class DoubleLinkedList<Class> implements List<Class> {
 		return current.getValue();
 	}
 /**
-	 *Metodo clear: vacia el nodo.
+ *	Vacía la lista
 **/
 	@Override
 	public void clear() {

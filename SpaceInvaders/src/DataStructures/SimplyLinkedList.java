@@ -80,7 +80,7 @@ public class SimplyLinkedList<Class> implements List<Class> {
 		return size;
 	}
 /**
-	 *Metodo clear: vacia el nodo.
+ *  Vacía la lista
 **/
 	@Override
 	public void clear() {
