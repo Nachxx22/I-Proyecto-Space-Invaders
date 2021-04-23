@@ -7,7 +7,7 @@ import DataStructures.SimplyLinkedList;
 import Objects.Audio;
 
 /**
- *
+ *Clase StateMachine: Se define variables canvas,select state, y el audio, se instancia la lista enlazada.
  */
 public class StateMachine {
 	private Canvas canvas;
@@ -16,7 +16,7 @@ public class StateMachine {
 	private Audio BackG,BackM;
 
 	/**
-	 *
+	 *Metodo StateMachine: Se instancia pantalla de menu y game y se agregan estados. canvas.
 	 * @param canvas
 	 */
 	public StateMachine(Canvas canvas) {
@@ -30,7 +30,7 @@ public class StateMachine {
 	}
 
 	/**
-	 *
+	 *Metodo draw: Selecciona el estado de juego que se va empezar a dibujar en el canvas.
 	 * @param g
 	 */
 	public void draw(Graphics2D g) {
@@ -46,7 +46,7 @@ public class StateMachine {
 	}
 
 	/**
-	 *
+	 *Metodo setState: Selecciona el estado(pantalla) que debe estar seleccionado mediante keylistener, escoge el audio adecuado segun la pantalla.
 	 * @param i
 	 */
 	public void setState(byte i) {
@@ -69,6 +69,10 @@ public class StateMachine {
 		selectState = i;
 		states.get(selectState).init(canvas);
 	}
+
+	/**
+	 *
+	 */
 	public void StopM(){
 		BackM.Stop();
 	}
