@@ -2,7 +2,9 @@ package Objects;
 
 import java.awt.Rectangle;
 
-
+/**
+ * Clase abstracta que define el movimiento de los objetos en el juego
+ */
 public abstract class Moveable extends GameObject {
 	private int speed;
 	private boolean collide;

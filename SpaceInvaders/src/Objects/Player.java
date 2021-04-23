@@ -49,7 +49,7 @@ public class Player extends Moveable implements MouseListener, Drawable {
 	
 	public void loseLife() {
 		Audio hit = new Audio("SpaceInvaders/Tracks/damage.wav");
-		if (lifes<=2){
+		if (lifes==1){
 			Audio hurt = new Audio("SpaceInvaders/Tracks/heartbeats.wav");
 		}
 		if(lifes >= 1) {

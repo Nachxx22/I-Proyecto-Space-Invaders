@@ -2,6 +2,9 @@ package Objects;
 
 import java.awt.Graphics2D;
 
+/**
+ * Clase del invasor enemigo, características básicas, es jefe...
+ */
 public class Invader extends Moveable implements Drawable {
 	private int resistance;
 	private boolean boss;

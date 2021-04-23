@@ -6,7 +6,9 @@ import java.net.URL;
 
 import javax.imageio.ImageIO;
 
-
+/**
+ * Clase abstracta, define el objeto mostrado en el juego y sus características básicas
+ */
 public abstract class GameObject {
 	private int posX, posY, width, height;
 	private BufferedImage sprite;

@@ -3,6 +3,9 @@ package Objects;
 import DataStructures.List;
 import display.Timer;
 
+/**
+ * Clase abstracta de una hilera cualquiera
+ */
 public abstract class InvaderLine implements Drawable {
 	private List<Invader> enemies;
 	private int posX, posY, speed;
@@ -68,6 +71,9 @@ public abstract class InvaderLine implements Drawable {
 		this.haveBoss = haveBoss;
 	}
 
+	/**
+	 *Ordena la hilera cuando un enemigo es estruido
+	 */
 	public void arrangeLine() {
 		int dist = 0;
 		for(int i = 0; i < this.getEnemies().size(); i++) {

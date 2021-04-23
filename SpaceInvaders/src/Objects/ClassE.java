@@ -48,7 +48,7 @@ public class ClassE extends InvaderLine implements Drawable {
 		}
 		this.arrangeLine();
 		this.angle += 0.035;
-		this.setPosY(this.getPosY()+1);
+		this.setPosY(this.getPosY()+2);
 		for(int c = 0; c < this.getEnemies().size(); c++) {
 			int dist = this.getEnemies().get(c).getPosX() - this.getPosX();
 			int newPosX = (int) (dist * Math.cos(this.angle % 90));

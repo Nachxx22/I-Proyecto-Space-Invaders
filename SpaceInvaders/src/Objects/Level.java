@@ -21,7 +21,7 @@ public class Level implements Drawable {
 
 	/**
 	 * Crea la clase enemiga a mostrar
-	 * @return
+	 * @return retornauna hilera de forma aleatoria
 	 */
 	public InvaderLine createNewLine() {
 		Random rand = new Random();
@@ -66,7 +66,7 @@ public class Level implements Drawable {
 
 	@Override
 	public void update(double delta) {
-
+		// Si las siguientes clases no poseen ya el jefe, continue con la siguiente hilera
 		if((current.getLineClass() == "ClassA" || current.getLineClass() == "ClassB" || current.getLineClass() == "ClassE") && !current.isHaveBoss()) {
 			this.nextLine();
 			return;
@@ -80,9 +80,7 @@ public class Level implements Drawable {
 				return;
 			}
 		}
-		if(current.getEnemies().size() == 0) {
-			this.nextLine();
-		}
+
 		this.current.update(delta);
 	}
 }

@@ -2,7 +2,9 @@ package Objects;
 
 import java.awt.Graphics2D;
 
-
+/**
+ * Clase del proyectíl del jugador
+ */
 public class Bullet extends Moveable implements Drawable {
 	public Bullet(int posX, int posY, int width, int height, int speed, String spriteName) {
 		super(posX, posY, width, height, speed, spriteName);
