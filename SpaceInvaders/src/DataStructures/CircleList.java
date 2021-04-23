@@ -5,7 +5,7 @@ package DataStructures;
  * de la hilera enemigo de clase "ClassC"
  */
 public class CircleList<Class> implements List<Class> {
-	private Node<Class> head; C""
+	private Node<Class> head;
 	private int size;
 	
 	public CircleList() {
