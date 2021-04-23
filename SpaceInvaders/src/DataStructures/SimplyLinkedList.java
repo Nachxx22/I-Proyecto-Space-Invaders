@@ -1,5 +1,9 @@
 package DataStructures;
 
+/**
+ *Clase SimplyLinkedList: Esta clase define una lista enlazada que es la que se usa para implementar
+ * la clase "Basic" y la clase "ClassA", de las hileras enemigas
+ */
 public class SimplyLinkedList<Class> implements List<Class> {
 	private Node<Class> head;
 	private int size;
