@@ -11,19 +11,27 @@ public class Node <Class> {
 		value = null;
 		next = null;
 	}
-
+/**
+	 *Metodo get: retorna el valor del nodo.
+*/
 	public Class getValue() {
 		return value;
 	}
-
+/**
+	 *Metodo set: ingresa un valor al nodo.
+*/
 	public void setValue(Class value) {
 		this.value = value;
 	}
-
+/**
+	 *Metodo getNext: retorna el siguiente valor al nodo.
+*/
 	public Node<Class> getNext() {
 		return next;
 	}
-
+/**
+	 *Metodo setNext: ingresa el siguiente valor al nodo.
+*/
 	public void setNext(Node<Class> next) {
 		this.next = next;
 	}
