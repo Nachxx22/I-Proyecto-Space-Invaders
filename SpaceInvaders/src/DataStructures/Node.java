@@ -1,5 +1,8 @@
 package DataStructures;
 
+/**
+ *Clase Node: Esta clase define el node que se va implemenar para las listas enlazadas simple y circular.
+ */
 public class Node <Class> {
 	private Class value;
 	private Node<Class> next;

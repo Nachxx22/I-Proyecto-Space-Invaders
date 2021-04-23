@@ -5,7 +5,7 @@ import java.awt.Point;
 import javax.swing.SwingUtilities;
 
 /**
- *Clase Mouse: Esta clase se encarga de recibir los datos de la poscicion del mous en la pantalla de
+ *Clase Mouse: Esta clase se encarga de recibir los datos de la poscicion del mouse en la pantalla de
  * la computadora para luego utilizarlos respecto a al canvas donde se desarrolla el juego, dicho canvas
  * es un parámetro para la composicion de la clase Mouse
  */

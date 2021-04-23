@@ -1,7 +1,11 @@
 package DataStructures;
 
+/**
+ *Clase CircleList: Esta clase define una lista enlazada que serae la que se va utilzar para la implementacion
+ * de la hilera enemigo de clase "ClassC"
+ */
 public class CircleList<Class> implements List<Class> {
-	private Node<Class> head;
+	private Node<Class> head; C""
 	private int size;
 	
 	public CircleList() {

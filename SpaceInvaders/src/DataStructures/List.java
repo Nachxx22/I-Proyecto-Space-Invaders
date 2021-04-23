@@ -1,5 +1,9 @@
 package DataStructures;
 
+/**
+ *Interfaz List: Es la interface de las listas con los metodos
+ * que comparten entre sí.
+ */
 public interface List<Class> {
 	public void add(Class value);
 	public void remove(int index);

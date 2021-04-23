@@ -1,4 +1,8 @@
 package DataStructures;
+/**
+ *Clase DoubleLinkedList: Esta clase es una lista doblemente enlazada, que es lo que se requiere
+ *  para cear las clases "ClassB" y "ClassE"
+ */
 
 public class DoubleLinkedList<Class> implements List<Class> {
 	private DoubleNode<Class> head;

@@ -1,5 +1,10 @@
 package DataStructures;
 
+/**
+ *Clase DoubleNode: Esta clase define el doble nodo que se va implemenar para
+ * la lista Doblemente Enlazada.
+ */
+
 public class DoubleNode<Class> {
 	private DoubleNode<Class> next;
 	private DoubleNode<Class> prev;
