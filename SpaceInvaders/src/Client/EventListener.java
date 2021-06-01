@@ -12,7 +12,7 @@ public class EventListener {
             PlayerHandler.players.put(packet.id,new NetPlayer(packet.id,packet.name));
             System.out.println(packet.name+"Has joined the game");
         }else if(p instanceof RemovePlayerPacket){
-            RemovePlayerPacket socket= (RemovePlayerPacket)p;
+            RemovePlayerPacket packet= (RemovePlayerPacket)p;
             System.out.println(PlayerHandler.players.get(packet.id).name +"Has left the game");
             PlayerHandler.players.remove(packet.id);
         }
