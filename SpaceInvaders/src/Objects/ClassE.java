@@ -24,6 +24,7 @@ public class ClassE extends InvaderLine implements Drawable {
 		this.setPosY(-70);
 		Random rand = new Random();
 		int newBoss = rand.nextInt(size-1);
+
 		this.getEnemies().get(newBoss).setBoss();
 		this.setHaveBoss(true);
 		this.setLineClass("ClassE");

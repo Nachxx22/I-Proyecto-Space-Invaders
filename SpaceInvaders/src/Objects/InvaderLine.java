@@ -1,5 +1,7 @@
 package Objects;
+/////
 
+import DataStructures.Arbol;
 import DataStructures.List;
 import display.Timer;
 
@@ -8,6 +10,7 @@ import display.Timer;
  */
 public abstract class InvaderLine implements Drawable {
 	private List<Invader> enemies;
+	private Arbol<Invader> en;
 	private int posX, posY, speed;
 	private Timer timer;
 	private String lineClass;
@@ -22,7 +25,12 @@ public abstract class InvaderLine implements Drawable {
 		
 		this.timer = new Timer();
 	}
-	
+
+	public void setEn(Arbol<Invader> en){ this.en = en;}
+	public Arbol<Invader> getEn() {
+		return en;
+	}
+
 	public List<Invader> getEnemies() {
 		return enemies;
 	}
@@ -85,4 +93,6 @@ public abstract class InvaderLine implements Drawable {
 			this.getEnemies().get(i).setPosX(dist + this.getEnemies().get(i).getPosX());
 		}
 	}
+
+
 }
