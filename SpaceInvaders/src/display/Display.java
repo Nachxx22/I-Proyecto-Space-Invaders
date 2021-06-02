@@ -5,6 +5,12 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferStrategy;
 
 import javax.swing.JFrame;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.util.Scanner;
 
 
 /**
@@ -17,6 +23,23 @@ public class Display extends Canvas implements Runnable {
 	private boolean running = false;
 	private Thread thread;
 
+	private String ip = "localhost"; //puede ser cualquier cosa.
+	private int port = 22222; //debe ser un short positivo 1 < port < 65535.
+	private Scanner scanner = new Scanner(System.in);
+	private Socket socket;
+	private DataOutputStream dos;
+	private DataInputStream dis;
+
+	private ServerSocket serverSocket;
+
+	private boolean servidor = true;
+	private boolean accepted = false;
+
+	private String waitingString = "Esperando al enemigo.";
+	private String failedCommWOpponentString = "No se pudo comunicar con el enemigo.";
+	private String wonString = "Ha ganado!";
+	private String enemyWonString = "El enemigo ha ganado!";
+
 	private int FPS;
 	private static StateMachine state;
 	private JFrame frame;
@@ -25,6 +48,12 @@ public class Display extends Canvas implements Runnable {
 	 *Display: Implementa el statemachine y empieza el juego.
 	 */
 	public Display() {
+		ip = scanner.nextLine();
+		port = scanner.nextInt();
+		while (port < 1 || port > 65535){
+			port = scanner.nextInt();
+		}
+
 		this.setSize(WIDTH*SCALE, HEIGHT*SCALE);
 		this.setFocusable(true);
 
@@ -48,13 +77,12 @@ public class Display extends Canvas implements Runnable {
 		this.frame = frame;
 	}
 
-
-
 	/**
 	 *Main del proyecto, Aqui se establece el Javaframe
 	 * @param args
 	 */
 	public static void main(String args[]) {
+
 		Display display = new Display();
 		JFrame frame = new JFrame();
 		frame.add(display);
@@ -119,6 +147,22 @@ public class Display extends Canvas implements Runnable {
 		} catch(InterruptedException e) {e.printStackTrace();}
 	}
 
+	public class Painter {
+
+	}
+
+	public void listenForServerRequest(){
+		Socket socket = null;
+		try{
+			socket = serverSocket.accept();
+			dos = new DataOutputStream(socket.getOutputStream());
+			dis = new DataInputStream(socket.getInputStream());
+			accepted = true;
+		} catch(IOException e){
+			e.printStackTrace();
+		}
+	}
+
 	/**
 	 *Metodo Run: Hace que el juego corre detras del programa.
 	 */
@@ -146,6 +190,11 @@ public class Display extends Canvas implements Runnable {
 				FPS = frames;
 				frames = 0;
 			}
+
+			if (!servidor && !accepted){
+				listenForServerRequest();
+			}
+
 			draw(bs);
 			update(delta);
 
