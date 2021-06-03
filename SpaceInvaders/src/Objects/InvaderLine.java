@@ -1,5 +1,7 @@
 package Objects;
 
+import DataStructures.Arbol;
+import DataStructures.BinarySearchTree;
 import DataStructures.List;
 import display.Timer;
 
@@ -8,24 +10,36 @@ import display.Timer;
  */
 public abstract class InvaderLine implements Drawable {
 	private List<Invader> enemies;
+	private Arbol<Invader> en;
 	private int posX, posY, speed;
 	private Timer timer;
 	private String lineClass;
 	private boolean haveBoss;
-	
+
 	public InvaderLine(int posX, int posY, int speed, int size, int lvl) {
 		this.posX = posX;
 		this.posY = posY;
 		this.speed = speed;
 		this.lineClass = "EnemyLine";
 		this.haveBoss = false;
-		
+
 		this.timer = new Timer();
 	}
-	
+
+	public void setEn(Arbol<Invader> en) {
+		this.en = en;
+	}
+
+	public Arbol<Invader> getEn() {
+		return en;
+	}
+
 	public List<Invader> getEnemies() {
 		return enemies;
 	}
+
+	public Arbol<Invader>getTreeEnemies(){ return en; }
+	public void setTreeEnemies(Arbol<Invader> en){this.en=en;}
 
 	public void setEnemies(List<Invader> enemies) {
 		this.enemies = enemies;
@@ -54,7 +68,7 @@ public abstract class InvaderLine implements Drawable {
 	public Timer getTimer() {
 		return timer;
 	}
-	
+
 	public String getLineClass() {
 		return lineClass;
 	}
@@ -72,16 +86,16 @@ public abstract class InvaderLine implements Drawable {
 	}
 
 	/**
-	 *Ordena la hilera cuando un enemigo es estruido
+	 * Ordena la hilera cuando un enemigo es estruido
 	 */
 	public void arrangeLine() {
 		int dist = 0;
-		for(int i = 0; i < this.getEnemies().size(); i++) {
+		for (int i = 0; i < this.getEnemies().size(); i++) {
 			this.getEnemies().get(i).setPosX(dist);
 			dist += 35 + this.getEnemies().get(i).getWidth();
 		}
-		dist = (840 - this.getEnemies().get(this.getEnemies().size()-1).getPosX() - this.getEnemies().get(this.getEnemies().size()-1).getWidth())/2;
-		for(int i = 0; i < this.getEnemies().size(); i++) {
+		dist = (840 - this.getEnemies().get(this.getEnemies().size() - 1).getPosX() - this.getEnemies().get(this.getEnemies().size() - 1).getWidth()) / 2;
+		for (int i = 0; i < this.getEnemies().size(); i++) {
 			this.getEnemies().get(i).setPosX(dist + this.getEnemies().get(i).getPosX());
 		}
 	}

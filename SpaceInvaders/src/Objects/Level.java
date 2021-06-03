@@ -1,6 +1,7 @@
 package Objects;
 
 import java.awt.Graphics2D;
+import java.io.IOException;
 import java.util.Random;
 
 /**
@@ -25,7 +26,9 @@ public class Level implements Drawable {
 	 */
 	public InvaderLine createNewLine() {
 		Random rand = new Random();
-		int index = rand.nextInt(6);
+		//La linea de abajo es la original y la que sirve
+		//int index = rand.nextInt(6);
+		int index= rand.nextInt(8);
 		int size = 6;
 		++speed;
 		if(index == 0) {
@@ -40,9 +43,20 @@ public class Level implements Drawable {
 			return new ClassD(280*3/2, -60, speed, size, this.lvl);
 		} else if(index == 5) {
 			return new ClassE(280*3/2, -60, speed, size, this.lvl);
-		} else {
+		} else if(index == 6) {
+			try {
+				return new ClassG(280 * 3 / 2, -60, speed, size, this.lvl);
+			}catch (Exception e){e.printStackTrace();
+				System.out.println("Error en el arbol avl");}
+		}else if(index == 7) {
+			try {
+				return new BST(280 * 3 / 2, -60, speed, size, this.lvl);
+			}catch (Exception e){e.printStackTrace();
+				System.out.println("Error en el arbol BST");}
+		}else {
 			return new Basic(280*3/2, -60, speed, size, this.lvl);
 		}
+		return null;
 	}
 
 	public InvaderLine getCurrent() {
