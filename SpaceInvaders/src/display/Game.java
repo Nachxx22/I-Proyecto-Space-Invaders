@@ -10,13 +10,10 @@ import java.io.IOException;
 import java.net.URL;
 import javax.imageio.ImageIO;
 
-import Objects.Audio;
-import Objects.Level;
-import Objects.Player;
+import Objects.*;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import Objects.Mouse;
 
 /***
  *Class Game: Extiende a superstatemachine e implementa keylistener y mouselistener, Aqui se define todos los objetos.
@@ -158,40 +155,41 @@ public class Game extends SuperStateMachine implements KeyListener, MouseListene
 			level = new Level(levelCounter);
 		}
 		// Destruir enemigos
-		for(int i = 0; i < level.getCurrent().getEnemies().size(); i++) {
-			int b = 0;
-			if(level.getCurrent().getEnemies().get(i).getPosY() >= 600 - level.getCurrent().getEnemies().get(i).getHeight()) {
+			for (int i = 0; i < level.getCurrent().getEnemies().size(); i++) {
+				int b = 0;
+				if (level.getCurrent().getEnemies().get(i).getPosY() >= 600 - level.getCurrent().getEnemies().get(i).getHeight()) {
 
-				while(player.isAlive()) {
-					player.loseLife();
+					while (player.isAlive()) {
+						player.loseLife();
 
-				}
-
-				return;
-			}
-			while(b < player.getBullets().size()) {
-				if(player.getBullets().get(b).isColliding(level.getCurrent().getEnemies().get(i))) {
-					player.getBullets().remove(b);
-					if(level.getCurrent().getEnemies().get(i).destroy()) {
-						Audio exp = new Audio("SpaceInvaders/Tracks/explosion.wav");
-						if(level.getCurrent().getEnemies().get(i).isBoss()) {
-							this.score += 500;
-						} else {
-							this.score += 100;
-
-						}
-						level.getCurrent().getEnemies().remove(i);
-						if(level.getCurrent().getEnemies().size() == 0) {
-							level.nextLine();
-							level.update(delta);
-						}
-						--i;
 					}
-				} else {
-					b++;
+
+					return;
+				}
+				while (b < player.getBullets().size()) {
+					if (player.getBullets().get(b).isColliding(level.getCurrent().getEnemies().get(i))) {
+						player.getBullets().remove(b);
+						if (level.getCurrent().getEnemies().get(i).destroy()) {
+							Audio exp = new Audio("SpaceInvaders/Tracks/explosion.wav");
+							if (level.getCurrent().getEnemies().get(i).isBoss()) {
+								this.score += 500;
+							} else {
+								this.score += 100;
+
+							}
+							level.getCurrent().getEnemies().remove(i);
+							if (level.getCurrent().getEnemies().size() == 0) {
+								level.nextLine();
+								level.update(delta);
+							}
+							--i;
+						}
+					} else {
+						b++;
+					}
 				}
 			}
-		}
+		//}
 		level.getCurrent().arrangeLine();
 
 

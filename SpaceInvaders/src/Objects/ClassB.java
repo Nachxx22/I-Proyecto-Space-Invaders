@@ -1,6 +1,6 @@
 package Objects;
 
-import java.awt.Graphics2D;
+import java.awt.*;
 import java.util.Random;
 
 import DataStructures.DoubleLinkedList;
@@ -60,5 +60,10 @@ public class ClassB extends InvaderLine implements Drawable {
 				change = true;
 			}
 		}
+	}
+
+	@Override
+	public void paint(Graphics2D g) {
+
 	}
 }

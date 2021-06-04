@@ -34,6 +34,11 @@ public class BinarySearchTree implements Arbol{
         size++;
     }
 
+    @Override
+    public Object get(Node node) {
+        return node.getValue();
+    }
+
     public void inOrder(Node n){
         if(n != null){
             inOrder(n.left);
@@ -73,17 +78,19 @@ public class BinarySearchTree implements Arbol{
     }
 
     public class Node{
-        public Node dad;
-        public Node rigth;
-        public Node left;
+        public Node dad, rigth, left;
         public int key;
         public Object contents;
 
         public Node(int index){
-            key = index;
-            rigth = null;
-            left = null;
-            dad = null;
+            this.key = index;
+            this.rigth = null;
+            this.left = null;
+            this.dad = null;
+        }
+
+        public int getValue(){
+            return key;
         }
     }
 }

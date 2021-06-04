@@ -1,6 +1,6 @@
 package Objects;
 
-import java.awt.Graphics2D;
+import java.awt.*;
 
 /**
  * Interfase implementada en los objetos para que sean mostrados en pantalla

@@ -1,6 +1,6 @@
 package Objects;
 
-import java.awt.Graphics2D;
+import java.awt.*;
 
 import DataStructures.SimplyLinkedList;
 
@@ -48,8 +48,5 @@ public class Basic extends InvaderLine implements Drawable {
 			this.getEnemies().get(c).update(delta);
 		}
 		this.arrangeLine();
-
-
-
 	}
 }

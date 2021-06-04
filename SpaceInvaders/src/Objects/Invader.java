@@ -1,6 +1,8 @@
 package Objects;
 
-import java.awt.Graphics2D;
+import DataStructures.BinarySearchTree;
+
+import java.awt.*;
 
 /**
  * Clase del invasor enemigo, características básicas, es jefe...
@@ -9,7 +11,6 @@ public class Invader extends Moveable implements Drawable {
 	private int resistance;
 	private boolean boss;
 
-
 	public Invader(int posX, int posY, int width, int height, int resistance, int speed, String spriteName) {
 		super(posX, posY, width, height, speed, spriteName);
 		this.resistance = resistance;
@@ -17,9 +18,7 @@ public class Invader extends Moveable implements Drawable {
 
 		this.boss = false;
 	}
-	
 
-	
 	public boolean destroy() {
 		--resistance;
 		return (resistance <= 0);
@@ -47,8 +46,6 @@ public class Invader extends Moveable implements Drawable {
 	@Override
 	public void draw(Graphics2D g) {
 		g.drawImage(this.getSprite(), this.getPosX(), this.getPosY(), this.getWidth(), this.getHeight(), null);
-
-
 	}
 
 	@Override

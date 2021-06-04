@@ -41,8 +41,5 @@ public class ClassA extends InvaderLine implements Drawable {
             }
         }
         this.arrangeLine();
-
-
-
     }
 }

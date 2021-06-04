@@ -1,6 +1,8 @@
 package Objects;
 
+import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 
@@ -12,7 +14,7 @@ import javax.imageio.ImageIO;
 public abstract class GameObject {
 	private int posX, posY, width, height;
 	private BufferedImage sprite;
-	
+
 	public GameObject(int posX, int posY, int width, int height, String spriteName) {
 		this.posX = posX;
 		this.posY = posY;
@@ -22,7 +24,8 @@ public abstract class GameObject {
 		try {
 			URL url = this.getClass().getResource("/Sprites/"+spriteName+".png");
 			sprite = ImageIO.read(url);
-		} catch(IOException e) {e.printStackTrace();}
+		} catch(IOException e) {e.printStackTrace(); }
+
 	}
 
 	public int getPosX() {
@@ -60,7 +63,7 @@ public abstract class GameObject {
 	public BufferedImage getSprite() {
 		return sprite;
 	}
-	
+
 	public void setImage(String spriteName) {
 		try {
 			URL url = this.getClass().getResource("/Sprites/"+spriteName+".png");
