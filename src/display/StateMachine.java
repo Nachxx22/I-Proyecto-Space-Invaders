@@ -2,9 +2,15 @@ package display;
 
 import java.awt.Canvas;
 import java.awt.Graphics2D;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.net.Socket;
 
 import DataStructures.SimplyLinkedList;
 import Objects.Audio;
+
+import javax.swing.*;
 
 /**
  *Clase StateMachine: Se define variables canvas,select state, y el audio, se instancia la lista enlazada.
@@ -15,18 +21,24 @@ public class StateMachine {
 	private byte selectState;
 	private Audio BackG,BackM;
 
+	private SuperStateMachine menu;
+	private SuperStateMachine game;
+
 	/**
 	 *Metodo StateMachine: Se instancia pantalla de menu y game y se agregan estados. canvas.
 	 * @param canvas
 	 */
-	public StateMachine(Canvas canvas, int userID) {
+	public StateMachine(Canvas canvas) {
 		this.canvas = canvas;
-		SuperStateMachine menu = new Menu(this,userID);
-		SuperStateMachine game = new Game(this,userID);
+		this.menu = new Menu(this);
+		this.game = new Game(this);
 
 		states.add(menu);
 		states.add(game);
+	}
 
+	public void connectToServer() {
+		game.connectToServer();
 	}
 
 	/**
@@ -92,4 +104,5 @@ public class StateMachine {
 	public byte getStates() {
 		return selectState;
 	}
+
 }

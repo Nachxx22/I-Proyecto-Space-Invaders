@@ -6,7 +6,10 @@ import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import java.io.IOException;
+import java.net.Socket;
 import java.net.URL;
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -20,9 +23,15 @@ import java.awt.event.MouseListener;
  *Class Game: Extiende a superstatemachine e implementa keylistener y mouselistener, Aqui se define todos los objetos.
  */
 public class Game extends SuperStateMachine implements KeyListener, MouseListener {
-	private final int userID;
+	private int userID;
+	private Socket socket;
+
+	private ReadFromServer rfsRun;
+	private	WriteToServer wtsRun;
+
 	private Player player;
 	private Player player2;
+
 	private Level level;
 	private int levelCounter;
 	private int score;
@@ -35,9 +44,8 @@ public class Game extends SuperStateMachine implements KeyListener, MouseListene
 	/**
 	 *metodo Game: Crea un jugador de ciertas dimensiones, llama al sprite y toma en cuenta el nivel, puntuaje, el puntero del mouse.
 	 * @param stateMachine
-	 * @param userID
 	 */
-	public Game(StateMachine stateMachine, int userID) {
+	public Game(StateMachine stateMachine) {
 		super(stateMachine);
 		this.userID = userID;
 
@@ -58,6 +66,118 @@ public class Game extends SuperStateMachine implements KeyListener, MouseListene
 			URL url = this.getClass().getResource("/Sprites/Background.png");
 			bg = ImageIO.read(url);
 		} catch(IOException e) {e.printStackTrace();}
+	}
+
+
+	/**
+	 *Main del proyecto, Aqui se establece el Javaframe
+	 * @param args
+	 */
+	public static void main(String args[]) {
+		Display display = new Display();
+		display.connectToServer();
+		JFrame frame = new JFrame();
+		frame.add(display);
+		frame.pack();
+
+		frame.setTitle("Space Invaders: Player");
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setResizable(false);
+		frame.setVisible(true);
+
+		display.setFrame(frame);
+		display.start();
+	}
+
+	@Override
+	public void connectToServer(){
+		try{
+			socket = new Socket("localhost",1331);
+			DataInputStream dis = new DataInputStream(socket.getInputStream());
+			DataOutputStream dos = new DataOutputStream(socket.getOutputStream());
+
+			userID = dis.readInt();
+
+			System.out.println("joined as player "+ userID);
+
+			if (userID == 1){
+				System.out.println("waiting for partner...");
+			}
+
+			rfsRun = new ReadFromServer(dis);
+			wtsRun = new WriteToServer(dos);
+
+			rfsRun.waitForStart();
+		}catch (IOException e){
+			e.printStackTrace();
+		}
+	}
+
+	private class ReadFromServer implements Runnable{
+
+		private DataInputStream dataIn;
+
+		public ReadFromServer (DataInputStream in){
+			dataIn = in;
+			System.out.println("RFS created");
+		}
+
+		public void waitForStart(){
+			try{
+				String start = dataIn.readUTF();
+				System.out.println("Message from server: "+start);
+
+				Thread readThread = new Thread(rfsRun);
+				Thread writeThread = new Thread(wtsRun);
+				readThread.start();
+				writeThread.start();
+			}catch(IOException e){
+				e.printStackTrace();
+			}
+		}
+
+		@Override
+		public void run() {
+			try{
+				while(true){
+					if (player2 != null){
+						player2.setPosX(dataIn.readInt());
+						player2.setPosY(dataIn.readInt());
+					}
+				}
+			}catch(IOException e){
+				e.printStackTrace();
+			}
+		}
+	}
+
+	private class WriteToServer implements Runnable{
+
+		private DataOutputStream dataOut;
+
+		public WriteToServer (DataOutputStream out){
+			dataOut = out;
+			System.out.println("WTS created");
+		}
+
+		@Override
+		public void run() {
+			try{
+				while (true){
+					if (player != null){
+
+
+
+						dataOut.writeInt(player.getPosX());
+						dataOut.writeInt(player.getPosY());
+						dataOut.flush();
+					}
+					Thread.sleep(25);
+				}
+			} catch(IOException | InterruptedException e){
+				e.printStackTrace();
+			}
+		}
 	}
 
 	/**
@@ -136,7 +256,7 @@ public class Game extends SuperStateMachine implements KeyListener, MouseListene
 	@Override
 	public void draw(Graphics2D g) {
 
-			if(!this.player.isAlive() || !this.player2.isAlive()) {
+			if(!this.player.isAlive() | !this.player2.isAlive()) {
 				this.gameOver(g);
 
 				return;

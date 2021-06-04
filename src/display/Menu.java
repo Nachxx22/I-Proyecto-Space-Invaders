@@ -20,7 +20,6 @@ import javax.imageio.ImageIO;
  *Clase Menu: Extiende a superstatemachine implementa keylistener, crea titulos en la pantalla de menu
  */
 public class Menu extends SuperStateMachine implements KeyListener {
-	private final int userID;
 	private Font titleFont = new Font("Impact", Font.PLAIN, 64);
 	private Font startFont = new Font("Impact", Font.PLAIN, 32);
 	private String title = "Space Invaders";
@@ -33,11 +32,9 @@ public class Menu extends SuperStateMachine implements KeyListener {
 	/**
 	 *Metodo menu:LLama un png con el background
      * @param stateMachine
-     * @param userID
      */
-	public Menu(StateMachine stateMachine, int userID) {
+	public Menu(StateMachine stateMachine) {
 		super(stateMachine);
-		this.userID = userID;
 		
 		try {
 			URL url = this.getClass().getResource("/Sprites/Background.png");
@@ -76,6 +73,11 @@ public class Menu extends SuperStateMachine implements KeyListener {
 	@Override
 	public void init(Canvas canvas) {
 		canvas.addKeyListener(this);
+	}
+
+	@Override
+	public void connectToServer() {
+
 	}
 
 	/**
