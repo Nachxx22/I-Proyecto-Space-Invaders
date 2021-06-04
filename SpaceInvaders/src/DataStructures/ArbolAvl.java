@@ -153,8 +153,13 @@ public class ArbolAvl implements Arbol {
      * @return boolean -- true si el elemento se encontro o false si no esta.
      */
     @Override
-    public Object contiene(Object dato) {
+    public boolean contiene(Object dato) {
         return encontrar( dato, raiz) != null;
+    }
+
+    @Override
+    public Object getTree(int index) {
+        return null;
     }
 
     @Override

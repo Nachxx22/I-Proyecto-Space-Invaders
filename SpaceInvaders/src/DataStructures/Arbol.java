@@ -29,7 +29,9 @@ public interface Arbol<Class> {
      * @param elem -- elemento a buscar en el arbol
      * @return boolean -- true si el arbol contiene el elemento y false en otro caso
      */
-    public Class contiene( Object elem);
+    public boolean contiene( Object elem);
+
+    public Class getTree(int index);
 
 
     /**

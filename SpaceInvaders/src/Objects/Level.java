@@ -43,12 +43,17 @@ public class Level implements Drawable {
 			return new ClassD(280*3/2, -60, speed, size, this.lvl);
 		} else if(index == 5) {
 			return new ClassE(280*3/2, -60, speed, size, this.lvl);
-		} else if(index == 6) {
+		}
+		/*
+		else if(index == 6) {
 			try {
 				return new ClassG(280 * 3 / 2, -60, speed, size, this.lvl);
 			}catch (Exception e){e.printStackTrace();
 				System.out.println("Error en el arbol avl");}
-		}else if(index == 7) {
+		}
+		 */
+		else if(index == 7) {
+
 			try {
 				return new BST(280 * 3 / 2, -60, speed, size, this.lvl);
 			}catch (Exception e){e.printStackTrace();

@@ -62,8 +62,8 @@ public class BinarySearchTree implements Arbol{
     }
 
     @Override
-    public Object contiene(Object elem) {
-        return elem;
+    public boolean contiene(Object elem) {
+        return false;
     }
 
     @Override
