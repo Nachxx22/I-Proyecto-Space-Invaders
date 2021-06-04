@@ -1,6 +1,6 @@
 package Objects;
 
-import java.awt.Graphics2D;
+import java.awt.*;
 import java.util.Random;
 
 import DataStructures.CircleList;
@@ -48,7 +48,6 @@ public class ClassC extends InvaderLine implements Drawable {
 			this.getEnemies().get(0).setBoss();
 		}
 		this.arrangeLine();
-
 
 	}
 }

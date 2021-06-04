@@ -1,5 +1,6 @@
 package Objects;
 
+import DataStructures.Arbol;
 import DataStructures.List;
 import display.Timer;
 
@@ -12,6 +13,7 @@ public abstract class InvaderLine implements Drawable {
 	private Timer timer;
 	private String lineClass;
 	private boolean haveBoss;
+	private Arbol treeEnemies;
 	
 	public InvaderLine(int posX, int posY, int speed, int size, int lvl) {
 		this.posX = posX;
@@ -25,6 +27,14 @@ public abstract class InvaderLine implements Drawable {
 	
 	public List<Invader> getEnemies() {
 		return enemies;
+	}
+
+	public Arbol getTreeEnemies(){
+		return treeEnemies;
+	}
+
+	public void setTreeEnemies(Arbol treeEnemies){
+		this.treeEnemies = treeEnemies;
 	}
 
 	public void setEnemies(List<Invader> enemies) {
