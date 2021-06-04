@@ -17,9 +17,6 @@ public class Player extends Moveable implements MouseListener, Drawable {
 	private boolean shoot, alive;
 	private int cooldown, lifes;
 	private Timer timer;
-	private int playerID;
-
-	private ClientConnection client;
 	
 	private SimplyLinkedList<Bullet> bullets ;
 
@@ -98,30 +95,6 @@ public class Player extends Moveable implements MouseListener, Drawable {
 	public void SetPosX(int X) {
 		if(X < 280*3-this.getWidth()+10) {
 			this.setPosX(X);}
-	}
-
-	public void connectToServer(){
-		client = new ClientConnection();
-	}
-
-	private class ClientConnection{
-		private Socket socket;
-		private DataInputStream dis;
-		private DataOutputStream dos;
-
-		public ClientConnection(){
-			try {
-				socket = new Socket("localhost",1331);
-				dis = new DataInputStream(socket.getInputStream());
-				dos = new DataOutputStream(socket.getOutputStream());
-				playerID = dis.readInt();
-				System.out.println("connected to server as player "+playerID);
-
-				//this is where the player receives server instructions.
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
 	}
 
 	@Override

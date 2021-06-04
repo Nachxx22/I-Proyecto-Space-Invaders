@@ -19,10 +19,10 @@ public class StateMachine {
 	 *Metodo StateMachine: Se instancia pantalla de menu y game y se agregan estados. canvas.
 	 * @param canvas
 	 */
-	public StateMachine(Canvas canvas) {
+	public StateMachine(Canvas canvas, int userID) {
 		this.canvas = canvas;
-		SuperStateMachine menu = new Menu(this);
-		SuperStateMachine game = new Game(this);
+		SuperStateMachine menu = new Menu(this,userID);
+		SuperStateMachine game = new Game(this,userID);
 
 		states.add(menu);
 		states.add(game);

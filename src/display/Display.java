@@ -5,6 +5,10 @@ import net.GameServer;
 import java.awt.Canvas;
 import java.awt.Graphics2D;
 import java.awt.image.BufferStrategy;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.net.Socket;
 import javax.swing.*;
 
 
@@ -20,6 +24,9 @@ public class Display extends Canvas implements Runnable {
 	private boolean won = false;
 	private boolean lost = false;
 
+	private int userID;
+	private Socket socket;
+
 	private Thread thread;
 
 	private int FPS;
@@ -33,8 +40,7 @@ public class Display extends Canvas implements Runnable {
 		this.setSize(WIDTH*SCALE, HEIGHT*SCALE);
 		this.setFocusable(true);
 
-		state = new StateMachine(this);
-		state.setState((byte) 0);
+
 	}
 
 	/**
@@ -43,11 +49,13 @@ public class Display extends Canvas implements Runnable {
 	 */
 	public static void main(String args[]) {
 		Display display = new Display();
+		display.connectToServer();
+		display.CreateStateMachine(display.userID);
 		JFrame frame = new JFrame();
 		frame.add(display);
 		frame.pack();
 
-		frame.setTitle("Space Invaders");
+		frame.setTitle("Space Invaders: Player");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setResizable(false);
 		frame.setVisible(true);
@@ -60,6 +68,13 @@ public class Display extends Canvas implements Runnable {
 	 *Metodo JFrame: es un metodo get de JFrame
 	 * @return frame
 	 */
+
+	public StateMachine CreateStateMachine (int userID){
+		state = new StateMachine(this,userID);
+		state.setState((byte) 0);
+		return state;
+	}
+
 	public JFrame getFrame() {
 		return frame;
 	}
@@ -121,6 +136,44 @@ public class Display extends Canvas implements Runnable {
 			thread.join();
 		} catch(InterruptedException e) {e.printStackTrace();}
 	}
+
+	public void connectToServer(){
+		try{
+			socket = new Socket("localhost",1331);
+			DataInputStream dis = new DataInputStream(socket.getInputStream());
+			DataOutputStream dos = new DataOutputStream(socket.getOutputStream());
+
+			userID = dis.readInt();
+
+			System.out.println("joined as player "+ userID);
+
+			if (userID == 1){
+				System.out.println("waiting for opponent...");
+			}
+		}catch (IOException e){
+			e.printStackTrace();
+		}
+	}
+
+//	private class ClientConnection{
+//		private Socket socket;
+//		private DataInputStream dis;
+//		private DataOutputStream dos;
+//
+//		public ClientConnection(){
+//			try {
+//				socket = new Socket("localhost",1331);
+//				dis = new DataInputStream(socket.getInputStream());
+//				dos = new DataOutputStream(socket.getOutputStream());
+//				playerID = dis.readInt();
+//				System.out.println("connected to server as player "+playerID);
+//
+//				//this is where the player receives server instructions.
+//			} catch (IOException e) {
+//				e.printStackTrace();
+//			}
+//		}
+//	}
 
 	/**
 	 *Metodo Run: Hace que el juego corre detras del programa.

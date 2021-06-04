@@ -20,6 +20,7 @@ import java.awt.event.MouseListener;
  *Class Game: Extiende a superstatemachine e implementa keylistener y mouselistener, Aqui se define todos los objetos.
  */
 public class Game extends SuperStateMachine implements KeyListener, MouseListener {
+	private final int userID;
 	private Player player;
 	private Player player2;
 	private Level level;
@@ -34,12 +35,19 @@ public class Game extends SuperStateMachine implements KeyListener, MouseListene
 	/**
 	 *metodo Game: Crea un jugador de ciertas dimensiones, llama al sprite y toma en cuenta el nivel, puntuaje, el puntero del mouse.
 	 * @param stateMachine
+	 * @param userID
 	 */
-	public Game(StateMachine stateMachine) {
+	public Game(StateMachine stateMachine, int userID) {
 		super(stateMachine);
+		this.userID = userID;
 
-		player =  new Player(280*3/2-25, 360/16*9*3-55, 60, 60, "Spaceship_1");
-		player.connectToServer();
+		if (userID == 1){
+			player =  new Player(280*3/2-25, 360/16*9*3-55, 60, 60, "Spaceship_1");
+			player2 = new Player(280*3/2+25, 360/16*9*3-55, 60, 60, "Spaceship_1");
+		} else{
+			player = new Player(280*3/2+25, 360/16*9*3-55, 60, 60, "Spaceship_1");
+			player2 = new Player(280*3/2-25, 360/16*9*3-55, 60, 60, "Spaceship_1");
+		}
 
 		level = new Level(1);
 		levelCounter = 1;
@@ -128,7 +136,7 @@ public class Game extends SuperStateMachine implements KeyListener, MouseListene
 	@Override
 	public void draw(Graphics2D g) {
 
-			if(!this.player.isAlive()) {
+			if(!this.player.isAlive() || !this.player2.isAlive()) {
 				this.gameOver(g);
 
 				return;
@@ -139,6 +147,7 @@ public class Game extends SuperStateMachine implements KeyListener, MouseListene
 			g.fillRect(280*3+10, 0, 350*3-280*3, 200*3+10);
 			this.showInfo(g);
 			player.draw(g);
+			player2.draw(g);
 			level.draw(g);
 		}
 
