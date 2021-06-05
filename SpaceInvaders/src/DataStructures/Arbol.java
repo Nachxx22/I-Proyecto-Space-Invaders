@@ -1,6 +1,7 @@
 package DataStructures;
 
 public interface Arbol<Class> {
+
     /**
      * Metodo para determinar si un arbol esta o no vacio.
      * @return boolean -- true si el arbol esta vacio y false en otro caso.
@@ -38,4 +39,8 @@ public interface Arbol<Class> {
      * Metodo para eliminar el elemento del arbol
      */
     public void eliminar(Object elem);
+
+    public void insert(int index, Object value);
+
+    Object get(BinarySearchTree.Node node);
 }

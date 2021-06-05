@@ -8,6 +8,7 @@ public class BinarySearchTree implements Arbol{
         root = null;
     }
 
+    @Override
     public void insert(int index, Object value){
         Node n = new Node(index);
         n.contents = value;
@@ -33,12 +34,31 @@ public class BinarySearchTree implements Arbol{
         size++;
     }
 
-    public void inOrder(Node n){
+    @Override
+    public Object get(Node node) {
+        return node.getValue();
+    }
+
+
+    public Object inOrder(Node n){
         if(n != null){
+            if(root.left==n){
+                return get(n.left);
+            }
+            if(root.rigth==n){
+                return get(n.rigth);
+            }
+            else{
+                System.out.println("error en los ifs");
+            }
+            /*
             inOrder(n.left);
             System.out.println("Indice: " + n.key + " Valor: " + n.contents);
             inOrder(n.rigth);
+
+             */
         }
+        return null;
     }
 
     @Override
@@ -67,6 +87,29 @@ public class BinarySearchTree implements Arbol{
     }
 
     @Override
+    public Object getTree(int index) {
+        if (index==1){
+            return get(root);
+        }
+        if (index==2){
+            return get(root.left);
+        }
+        if(index==3){
+            return get(root.rigth);
+        }
+        else if(index%2==0){
+            inOrder(root.left);
+        }
+        else if(index%3==0){
+            inOrder(root.rigth);
+        }
+        else{
+            System.out.println("error en los ifs de getTree");
+        }
+        return null;
+    }
+
+    @Override
     public void eliminar(Object elem) {
 
     }
@@ -79,10 +122,14 @@ public class BinarySearchTree implements Arbol{
         public Object contents;
 
         public Node(int index){
-            key = index;
-            rigth = null;
-            left = null;
-            dad = null;
+            this.key = index;
+            this.rigth = null;
+            this.left = null;
+            this.dad = null;
+        }
+
+        public int getValue(){
+            return key;
         }
     }
 }

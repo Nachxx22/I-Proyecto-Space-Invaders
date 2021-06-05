@@ -2,11 +2,14 @@ package DataStructures;
 
 import java.util.Comparator;
 
+
+
 /**
  * Clase para trabajar con  binarios de busqueda balanceados, llamados AVL
  * @author Amparo Lopez Gaona
  * @version 1a. ed.
  */
+
 public class ArbolAvl implements Arbol {
     private NodoAvl  raiz;            // Nodo raiz del arbol
     private Comparator cmp;          // Comparador
@@ -166,6 +169,17 @@ public class ArbolAvl implements Arbol {
     public void eliminar(Object elem) {
 
     }
+
+    @Override
+    public void insert(int index, Object value) {
+
+    }
+
+    @Override
+    public Object get(BinarySearchTree.Node node) {
+        return null;
+    }
+
     /*
      * Metodo interno para encontrar un elemento en un subarbol
      * @param dato -- elemento buscado.
