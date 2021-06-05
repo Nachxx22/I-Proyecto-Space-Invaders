@@ -34,6 +34,7 @@ public class ClassB extends InvaderLine implements Drawable {
 	@ Override
 	public void draw(Graphics2D g) {
 		for(int i = 0; i < this.getEnemies().size(); i++) {
+			System.out.println(this.getEnemies().get(i));
 			this.getEnemies().get(i).draw(g);
 		}
 	}

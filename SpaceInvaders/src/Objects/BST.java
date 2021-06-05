@@ -1,6 +1,8 @@
 package Objects;
 
-import DataStructures.BinarySearchTree;
+// import DataStructures.BinarySearchTree;
+// import DataStructures.SimplyLinkedList;
+import DataStructures.*;
 
 import java.awt.*;
 
@@ -8,6 +10,7 @@ public class BST extends InvaderLine implements Drawable{
     public BST(int posX, int posY, int speed, int size, int lvl){
         super(posX, posY, speed, size, lvl);
         int counter = 0;
+        this.setEnemies(new SimplyLinkedList<Invader>());
         this.setTreeEnemies(new BinarySearchTree());
         while(counter < size) {
 
@@ -15,7 +18,8 @@ public class BST extends InvaderLine implements Drawable{
             String sprite = "Invader_1";
 
             Invader enemy = new Invader(posX, posY, 50, 50, lvl, speed, sprite);
-            //this.getTreeEnemies().insert(enemy);
+            this.getEnemies().add(enemy);
+            this.getTreeEnemies().insert(enemy);
             counter++;
         }
         this.setLineClass("BST");
@@ -23,7 +27,8 @@ public class BST extends InvaderLine implements Drawable{
 
     @Override
     public void draw(Graphics2D g) {
-        for(int c = 0; c < this.getTreeEnemies().tamaño(); c++){
+        for(int c = 1; c < this.getEnemies().size(); c++){
+            System.out.println(this.getTreeEnemies().getTree(c));
             this.getTreeEnemies().getTree(c).draw(g);
         }
     }

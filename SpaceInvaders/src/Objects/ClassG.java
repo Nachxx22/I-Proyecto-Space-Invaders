@@ -34,7 +34,7 @@ public class ClassG extends  InvaderLine implements  Drawable{
      */
     public void draw(Graphics2D g) {
         for (int c = 0; c < this.getEn().tamaño(); c++) {
-            this.getEn().getTree(c).draw(g);
+           // this.getEn().getTree(c).draw(g);
         }
     }
 

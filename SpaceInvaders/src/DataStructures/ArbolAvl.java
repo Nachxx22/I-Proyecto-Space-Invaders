@@ -1,5 +1,7 @@
 package DataStructures;
 
+import Objects.Invader;
+
 import java.util.Comparator;
 
 
@@ -170,15 +172,18 @@ public class ArbolAvl implements Arbol {
 
     }
 
-    @Override
-    public void insert(int index, Object value) {
 
-    }
 
     @Override
-    public Object get(BinarySearchTree.Node node) {
+    public Object get(BinarySearchTree.TreeNode treeNode) {
         return null;
     }
+
+    @Override
+    public void insert(Invader enemy) {
+
+    }
+
 
     /*
      * Metodo interno para encontrar un elemento en un subarbol

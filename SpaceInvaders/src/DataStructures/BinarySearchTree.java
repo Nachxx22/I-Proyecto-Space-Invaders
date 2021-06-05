@@ -1,22 +1,25 @@
 package DataStructures;
 
+import Objects.Invader;
+
 public class BinarySearchTree implements Arbol{
-    Node root;
+    TreeNode root;
     int size;
 
     public BinarySearchTree(){
         root = null;
     }
 
+    /*
     @Override
-    public void insert(int index, Object value){
-        Node n = new Node(index);
-        n.contents = value;
+    public void insert(int index, Class value){
+        TreeNode n = new TreeNode(index);
+        n.setData(value);
 
         if(root == null){
             root = n;
         }else{
-            Node aux = root;
+            TreeNode aux = root;
             while(aux != null){
                 n.dad = aux;
                 if(n.key >= aux.key){
@@ -34,13 +37,15 @@ public class BinarySearchTree implements Arbol{
         size++;
     }
 
+     */
+
     @Override
-    public Object get(Node node) {
-        return node.getValue();
+    public Object get(TreeNode treeNode) {
+        return treeNode.getValue();
     }
 
 
-    public Object inOrder(Node n){
+    public Object inOrder(TreeNode n){
         if(n != null){
             if(root.left==n){
                 return get(n.left);
@@ -87,15 +92,15 @@ public class BinarySearchTree implements Arbol{
     }
 
     @Override
-    public Object getTree(int index) {
+    public Invader getTree(int index) {
         if (index==1){
-            return get(root);
+            return root.getData();
         }
         if (index==2){
-            return get(root.left);
+            return root.left.getData();
         }
         if(index==3){
-            return get(root.rigth);
+            return root.rigth.getData();
         }
         else if(index%2==0){
             inOrder(root.left);
@@ -113,23 +118,61 @@ public class BinarySearchTree implements Arbol{
     public void eliminar(Object elem) {
 
     }
+    @Override
+    public void insert(Invader enemy) {
+        TreeNode n = new TreeNode();
+        n.setData(enemy);
 
-    public class Node{
-        public Node dad;
-        public Node rigth;
-        public Node left;
+        if(root == null){
+            root = n;
+        }else{
+            TreeNode aux = root;
+            while(aux != null){
+                n.dad = aux;
+                if(n.key >= aux.key){
+                    aux = aux.rigth;
+                }else{
+                    aux = aux.left;
+                }
+            }
+            if(n.key < n.dad.key){
+                n.dad.left = n;
+            }else{
+                n.dad.rigth = n;
+            }
+        }
+        size++;
+
+    }
+
+
+    public class TreeNode {
+        // El nodo no tiene las funciones necesarias además de hacerse la clase en la misma clase del arbol binario lo cual puede causar error
+        // El get value no tiene ningun sentido ya que siempre va a retornar un 0 por que nunca se hace un set de value para el nodo
+        //el nodo simplemente recibe un index como key que no tiene ningún sentido ya que el nodo deberia contener el objecto del Invader
+        public TreeNode dad;
+        public TreeNode rigth;
+        public TreeNode left;
         public int key;
         public Object contents;
+        public Invader Data;
 
-        public Node(int index){
-            this.key = index;
+        public TreeNode(){
+            //this.key = index;
             this.rigth = null;
             this.left = null;
             this.dad = null;
+            this.Data=null;
         }
 
         public int getValue(){
             return key;
+        }
+        public void setData(Invader Data){
+            this.Data=Data;
+        }
+        public Invader getData(){
+            return Data;
         }
     }
 }

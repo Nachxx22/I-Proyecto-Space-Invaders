@@ -1,5 +1,7 @@
 package DataStructures;
 
+import Objects.Invader;
+
 public interface Arbol<Class> {
 
     /**
@@ -40,7 +42,13 @@ public interface Arbol<Class> {
      */
     public void eliminar(Object elem);
 
-    public void insert(int index, Object value);
+    // public void insert(int index, Class value);
 
-    Object get(BinarySearchTree.Node node);
+    //public void insert(int index, Class value);
+
+    Object get(BinarySearchTree.TreeNode treeNode);
+
+    // void insert(Class enemy);
+
+    void insert(Invader enemy);
 }
