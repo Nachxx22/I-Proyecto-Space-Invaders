@@ -136,6 +136,7 @@ public class BinarySearchTree implements Arbol{
                 }
             }
             if(n.key < n.dad.key){
+                aux.setLeft(n);
                 n.dad.left = n;
             }else{
                 n.dad.rigth = n;
@@ -163,6 +164,13 @@ public class BinarySearchTree implements Arbol{
             this.left = null;
             this.dad = null;
             this.Data=null;
+        }
+
+        public void setLeft(TreeNode left) {
+            this.left = left;
+        }
+        public void setRigth(TreeNode rigth) {
+            this.rigth = rigth;
         }
 
         public int getValue(){
