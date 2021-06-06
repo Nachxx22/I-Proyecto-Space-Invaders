@@ -895,7 +895,7 @@ public class ArbolAvl<T> extends java.util.AbstractSet<T>{
 	/**
 	 * Implementa los metodos pertenecientes a la estructura de un nodo.
 	 */
-	private class Nodo<T>{
+	public class Nodo<T>{
 		/**
 		 * Dato contenido en el nodo.
 		 */

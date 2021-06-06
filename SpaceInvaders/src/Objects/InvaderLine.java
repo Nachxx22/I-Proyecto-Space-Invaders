@@ -1,6 +1,9 @@
 package Objects;
 
+import DataStructures.ArbolAvl;
+import DataStructures.ArbolAvl.Nodo;
 import DataStructures.List;
+import DataStructures.SimplyLinkedList;
 import display.Timer;
 
 /**
@@ -29,6 +32,34 @@ public abstract class InvaderLine implements Drawable {
 
 	public void setEnemies(List<Invader> enemies) {
 		this.enemies = enemies;
+	}  
+
+	public void setEnemies(ArbolAvl<Invader> enemies) {
+		//this.enemies = enemies;
+		
+		ArbolAvl<Invader>.Nodo<Invader> raiz = enemies.getRaiz();
+		List<Invader> lista = new SimplyLinkedList<Invader>();
+		
+		traverseArbol(lista, raiz); 
+
+		this.setEnemies(lista);
+	}
+	
+	public void traverseArbol(List<Invader> lista, ArbolAvl<Invader>.Nodo<Invader> nodo)
+	{
+		if(nodo == null)
+		{
+			return;
+		} 
+
+		traverseArbol(lista, nodo.getIzquierda()); 
+		 
+		Invader cInvader = nodo.getDato();
+		
+		cInvader.setPosY(cInvader.getPosY() - 100 * nodo.getAltura());
+		lista.add(cInvader); 
+		
+		traverseArbol(lista, nodo.getDerecha());
 	}
 
 	public int getPosX() {

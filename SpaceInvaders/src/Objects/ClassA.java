@@ -40,9 +40,6 @@ public class ClassA extends InvaderLine implements Drawable {
                 this.setHaveBoss(true);
             }
         }
-        this.arrangeLine();
-
-
-
+        this.arrangeLine(); 
     }
 }

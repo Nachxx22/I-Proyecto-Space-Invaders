@@ -25,9 +25,12 @@ public class Level implements Drawable {
 	 */
 	public InvaderLine createNewLine() {
 		Random rand = new Random();
-		int index = rand.nextInt(6);
+		int index = rand.nextInt(7);
 		int size = 6;
 		++speed;
+		
+		
+
 		if(index == 0) {
 			return new Basic(280*3/2, -60, speed, size, this.lvl);
 		} else if(index == 1) {
@@ -40,8 +43,11 @@ public class Level implements Drawable {
 			return new ClassD(280*3/2, -60, speed, size, this.lvl);
 		} else if(index == 5) {
 			return new ClassE(280*3/2, -60, speed, size, this.lvl);
+		} else if(index == 6) { 
+			return new ClassG(280*3/2, -60, speed, size, this.lvl);
 		} else {
 			return new Basic(280*3/2, -60, speed, size, this.lvl);
+			
 		}
 	}
 
