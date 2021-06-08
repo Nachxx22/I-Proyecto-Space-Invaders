@@ -5,9 +5,9 @@ import java.util.Comparator;
 public class init {
     public  static void main (String[] args){
 
-         ArbolAvl r = new ArbolAvl();
-         r.agregar(4);
-         r.agregar(6);
+      //   ArbolAvl r = new ArbolAvl();
+      //   r.agregar(4);
+      //   r.agregar(6);
 
 
 

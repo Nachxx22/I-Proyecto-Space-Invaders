@@ -50,5 +50,5 @@ public interface Arbol<Class> {
 
     // void insert(Class enemy);
 
-    void insert(Invader enemy);
+    void insert(Invader enemy, int key);
 }

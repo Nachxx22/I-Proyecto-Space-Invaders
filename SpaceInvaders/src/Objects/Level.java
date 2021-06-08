@@ -29,7 +29,8 @@ public class Level implements Drawable {
 		Random rand = new Random();
 		//La linea de abajo es la original y la que sirve
 		//int index = rand.nextInt(6);
-		int index= rand.nextInt(8);
+		//int index= rand.nextInt(7);
+		int index=6;
 		int size = 6;
 		++speed;
 		if(index == 0) {
@@ -51,15 +52,7 @@ public class Level implements Drawable {
 			System.out.println("Clase E");
 			return new ClassE(280*3/2, -60, speed, size, this.lvl);
 		}
-		/*
 		else if(index == 6) {
-			try {
-				return new ClassG(280 * 3 / 2, -60, speed, size, this.lvl);
-			}catch (Exception e){e.printStackTrace();
-				System.out.println("Error en el arbol avl");}
-		}
-		 */
-		else if(index == 7) {
 			System.out.println("Clase BST");
 			try {
 				return new BST(280 * 3 / 2, -60, speed, size, this.lvl);

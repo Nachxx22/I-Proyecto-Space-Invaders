@@ -19,7 +19,7 @@ public class BST extends InvaderLine implements Drawable{
 
             Invader enemy = new Invader(posX, posY, 50, 50, lvl, speed, sprite);
             this.getEnemies().add(enemy);
-            this.getTreeEnemies().insert(enemy);
+            this.getTreeEnemies().insert(enemy,counter);
             counter++;
         }
         this.setLineClass("BST");
