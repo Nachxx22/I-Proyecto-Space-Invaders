@@ -1,7 +1,7 @@
 package DataStructures;
 
 import Objects.Invader;
-import com.sun.source.tree.Tree;
+
 
 public class BinarySearchTree implements Arbol{
     TreeNode root;
@@ -47,6 +47,7 @@ public class BinarySearchTree implements Arbol{
 
 
     public Object inOrder(TreeNode n){
+        System.out.println("Entro en inOrder");
         if(n != null){
             if(root.left==n){
                 return get(n.left);
@@ -135,16 +136,19 @@ public class BinarySearchTree implements Arbol{
             root = n;
             size++;
             System.out.println(root);
+            System.out.println("Fijado el root"+""+root+"  es    "+ root.getData());
             return;
         }
         TreeNode First =root;
         if(First.rigth == null){
             System.out.println("añadido root.right");
+            System.out.println(n.getData());
             First.setRigth(n);
             size++;
         }
         if(First.left==null){
             System.out.println("añadido root.left");
+            System.out.println(n.getData());
             First.setLeft(n);
             size++;
         }
