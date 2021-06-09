@@ -4,12 +4,8 @@ import java.util.*;
 import java.util.List;
 
 /**
- * Implementa métodos de AbstractCollection y AbstractSet de forma específica para 
+ * Implementa mï¿½todos de AbstractCollection y AbstractSet de forma especï¿½fica para 
  * una estructura de arbol AVL, mejorando en ciertos casos la velocidad de ejecucion.
- *
- * @author Alvaro Trigo Lopez
- *
- * @version 5.00 2009/6/14
  */
 public class ArbolAvl<T> extends java.util.AbstractSet<T>{
     /**
@@ -28,8 +24,8 @@ public class ArbolAvl<T> extends java.util.AbstractSet<T>{
     public ArbolAvl(){	
     }
     /**
-     * Constructor para recibir el comparador que se utilizará para comparar los elementos. Si
-     * no se construye el árbol con este método los objetos se compararan en función del orden
+     * Constructor para recibir el comparador que se utilizarï¿½ para comparar los elementos. Si
+     * no se construye el ï¿½rbol con este mï¿½todo los objetos se compararan en funciï¿½n del orden
      * natural (comparable).
      * @param cmp comparador
      */
@@ -62,7 +58,7 @@ public class ArbolAvl<T> extends java.util.AbstractSet<T>{
 
     	int altIzq, altDer;
 
-    	//no existía arbol
+    	//no existï¿½a arbol
     	if(raizTmp == null){
     		this.raiz = nodo;
     		return true;
@@ -346,7 +342,7 @@ public class ArbolAvl<T> extends java.util.AbstractSet<T>{
     	T dato, primero;
     	boolean insertado = false;
     	
-    	//si el arbol no existía
+    	//si el arbol no existï¿½a
     	if(this.isEmpty()){    		
     		//comprobamos que sean comparables entre si. Sino, salta excepcion.
     		primero = iter.next();
@@ -355,9 +351,9 @@ public class ArbolAvl<T> extends java.util.AbstractSet<T>{
     		}
     	}
     	
-    	//el arbol ya existía
+    	//el arbol ya existï¿½a
     	else{
-    		//comprobamos que los datos sean comparables con los que ya están dentro del arbol
+    		//comprobamos que los datos sean comparables con los que ya estï¿½n dentro del arbol
     		primero = this.getRaiz().getDato();
     		while(iter.hasNext()){
     			this.compararDato(primero, iter.next());
@@ -365,7 +361,7 @@ public class ArbolAvl<T> extends java.util.AbstractSet<T>{
     	}
     	
     	
-    	//solo llega hasta aqui si los elementos son comparables entre si o con los que ya había
+    	//solo llega hasta aqui si los elementos son comparables entre si o con los que ya habï¿½a
     	while(iter2.hasNext()){
     		dato = iter2.next();
     		if(dato!=null){
@@ -533,7 +529,7 @@ public class ArbolAvl<T> extends java.util.AbstractSet<T>{
 	    		borrar.setDato(null);
 	    	}
 	    	
-	    	//solo tiene un hijo? (o 2 pero en la misma altura) entonces la altura de ese subarbol será 1 o 2 (altura raiz = 1)
+	    	//solo tiene un hijo? (o 2 pero en la misma altura) entonces la altura de ese subarbol serï¿½ 1 o 2 (altura raiz = 1)
 	    	else if(borrar.getAltura()<=2){
 
 	    		if(borrar.getIzquierda()!=null){
@@ -547,7 +543,7 @@ public class ArbolAvl<T> extends java.util.AbstractSet<T>{
 	    		}
 	    	}
 	    	
-	    	//cuando no es ni un hoja ni su padre. Es decir, está por medio del arbol.
+	    	//cuando no es ni un hoja ni su padre. Es decir, estï¿½ por medio del arbol.
 	    	else{
 
 	    		//buscamos el mayor de la izquierda
@@ -571,7 +567,7 @@ public class ArbolAvl<T> extends java.util.AbstractSet<T>{
 		    	c_aux = cambiar.getDato();
 		    	Nodo<T> papa = padre(cambiar);
 		    	
-		    	//si el nodo que hemos cambiado se ha quedado con algún hijo...
+		    	//si el nodo que hemos cambiado se ha quedado con algï¿½n hijo...
 		    	if(cambiar.getIzquierda()!=null || cambiar.getDerecha()!=null){
 			    	if(cambiar.getIzquierda()!=null){
 			    		cambiar.setDato(cambiar.getIzquierda().getDato());
@@ -581,7 +577,7 @@ public class ArbolAvl<T> extends java.util.AbstractSet<T>{
 			    		cambiar.setDerecha(null);
 			    	}
 		    	}
-		    	//si no tiene hijos ya, lo eliminamos sin más
+		    	//si no tiene hijos ya, lo eliminamos sin mï¿½s
 		    	else{		    	
 			    	if(papa.getIzquierda()!=null && compararDato(papa.getIzquierda().getDato(), cambiar.getDato())==0){
 			    		papa.setIzquierda(null);
@@ -696,7 +692,7 @@ public class ArbolAvl<T> extends java.util.AbstractSet<T>{
     }
 
     /**
-     * Este método recorre el árbol mediante el recorrido INORDEN y almacena cada elemento.
+     * Este mï¿½todo recorre el ï¿½rbol mediante el recorrido INORDEN y almacena cada elemento.
      * en una lista que se devuelve al terminar el recorrido.
      * @return lista Lista en inorden con el contenido del arbol.
      */
@@ -722,7 +718,7 @@ public class ArbolAvl<T> extends java.util.AbstractSet<T>{
     
     
     /**
-     * Este método recorre el árbol mediante el recorrido PREORDEN y almacena cada
+     * Este mï¿½todo recorre el ï¿½rbol mediante el recorrido PREORDEN y almacena cada
      * elemento en una lista que se devuelve al terminar el recorrido.
      * @return lista Lista en preorden con el contenido del arbol.
      */
@@ -747,7 +743,7 @@ public class ArbolAvl<T> extends java.util.AbstractSet<T>{
     
 
     /**
-     * Este método recorre el árbol mediante el recorrido POSTORDEN y almacena cada
+     * Este mï¿½todo recorre el ï¿½rbol mediante el recorrido POSTORDEN y almacena cada
      * elemento en una lista que se devuelve al terminar el recorrido.
      * @return lista Lista en postOrden con el contenido del arbol.
      */
@@ -780,8 +776,8 @@ public class ArbolAvl<T> extends java.util.AbstractSet<T>{
     }
     
     /**
-     * Se devuelve la altura del Nodo que contiene al dato pasado por parámetro, si 
-     * el dato nose encuentra en el árbol se devuelve -1.
+     * Se devuelve la altura del Nodo que contiene al dato pasado por parï¿½metro, si 
+     * el dato nose encuentra en el ï¿½rbol se devuelve -1.
      * @param dato dato del que buscamos la altura.
      * @return altura del nodo
      */
@@ -795,9 +791,9 @@ public class ArbolAvl<T> extends java.util.AbstractSet<T>{
     }
 
     /**
-     * Se devuelve la profundidad del Nodo que contiene al dato pasado por parámetro,
-     * si eldato no se encuentra en el árbol se devuelve -1. La profundidad del nodo
-     * raíz es 0. 
+     * Se devuelve la profundidad del Nodo que contiene al dato pasado por parï¿½metro,
+     * si eldato no se encuentra en el ï¿½rbol se devuelve -1. La profundidad del nodo
+     * raï¿½z es 0. 
      * @param dato dato del que buscamos su profundidad.
      * @return profundidad del dato pasado por parametro
      */
@@ -813,7 +809,7 @@ public class ArbolAvl<T> extends java.util.AbstractSet<T>{
     }
     
     /**
-     * Devuelve el Nodo que es la raíz del árbol.
+     * Devuelve el Nodo que es la raï¿½z del ï¿½rbol.
      * @return nodo raiz.
      */
     public Nodo<T> getRaiz(){
@@ -821,7 +817,7 @@ public class ArbolAvl<T> extends java.util.AbstractSet<T>{
     }
     
     /**
-     * Devuelve el Nodo que contiene al dato pasado por parámetro.
+     * Devuelve el Nodo que contiene al dato pasado por parï¿½metro.
      * @param dato dato del nodo a buscar.
      * @return nodo con el dato a buscar.
      */
@@ -857,7 +853,7 @@ public class ArbolAvl<T> extends java.util.AbstractSet<T>{
     }
     
     /**
-     * Devuelve el comparator que utiliza el árbol.
+     * Devuelve el comparator que utiliza el ï¿½rbol.
      * @return comparador que utiliza el arbol.
      */
     private Comparator<T> getComparator(){
