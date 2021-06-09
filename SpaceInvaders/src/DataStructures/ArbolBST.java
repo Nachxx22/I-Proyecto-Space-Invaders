@@ -46,7 +46,7 @@ public interface ArbolBST<Class> {
 
     //public void insert(int index, Class value);
 
-    Object get(BinarySearchTree.TreeNode treeNode);
+    //Object get(BinarySearchTree.TreeNode treeNode);
 
     // void insert(Class enemy);
 

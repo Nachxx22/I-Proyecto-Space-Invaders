@@ -7,44 +7,31 @@ public class BinarySearchTree implements ArbolBST {
     TreeNode root;
     int size;
 
+    /**
+     * Para crear el bst con el root/raiz en null
+     **/
     public BinarySearchTree() {
         root = null;
     }
 
-
-
-    @Override
-    public Object get(TreeNode treeNode) {
-        return treeNode.getValue();
-    }
-
-
+    /**
+     * Recorre el arbol y returna el nodo con el indice regresado
+     * @param index el indice para buscar el nodo deseado
+     * @param n El nodo inicial para empezar la busqueda
+     **/
     public Invader inOrder(TreeNode n,int index){
-        System.out.println("Entro en inOrder");
-        System.out.println(n+"    "+index);
         if(n != null){
 
             if(n.getRigth().getKey()==index){
-                System.out.println(n.getRigth().getKey());;
-                System.out.println("retornando datos del nodo derecho");
                 return n.getRigth().getData();}
             if(n.getLeft().getKey()==index) {
-                System.out.println(n.getLeft().getKey());;
-                System.out.println("retornando datos del nodo izquierdo");
                 return n.getLeft().getData();}
             if(n.getLeft().getKey() != index || n.getRigth().getKey() != index){
-                System.out.println("Siguente inOrder para seguir buscando");
                  return inOrder(n.getRigth(),index);
             }
             else{
                 System.out.println("error en los ifs");
             }
-            /*
-            inOrder(n.left);
-            System.out.println("Indice: " + n.key + " Valor: " + n.contents);
-            inOrder(n.rigth);
-
-             */
         }
         return null;
     }
@@ -75,6 +62,10 @@ public class BinarySearchTree implements ArbolBST {
     }
 
     @Override
+    /**
+     * retorna el nodo con el indice ingresado
+     * @param index I
+     **/
     public Invader getTree(int index) {
         TreeNode First=root;
         if (index==0){
@@ -92,6 +83,11 @@ public class BinarySearchTree implements ArbolBST {
     public void eliminar(Object elem) {
 
     }
+    /**
+     * Inserta el nodo
+     * @param enemy Objecto Invader que se busca insertar
+     * @param key Indice para buscar donde ingresar el objecto
+     **/
     @Override
     public void insert(Invader enemy,int key) {
         TreeNode n = new TreeNode(key);
@@ -140,6 +136,10 @@ public class BinarySearchTree implements ArbolBST {
         public Object contents;
         public Invader Data;
 
+        /**
+         * Para crear los nuevos nodos
+         * @param key este es un int que es el indice del nodo para insertarlo e ubicarlo
+         **/
         public TreeNode(int key){
             this.key = key;
             this.rigth = null;
@@ -148,31 +148,60 @@ public class BinarySearchTree implements ArbolBST {
             this.Data=null;
         }
 
-
+        /**
+         * retorna el nodo izquierdo
+         **/
         public TreeNode getLeft() {
             return left;
         }
+
+        /**
+         * Añade el nodo izquierdo
+         **/
         public void setLeft(TreeNode left) {
             this.left = left;
         }
+
+        /**
+         * Añade el nodo derecho
+         **/
         public void setRigth(TreeNode rigth) {
             this.rigth = rigth;
         }
+
+        /**
+         * retorna el nodo derecho
+         **/
         public TreeNode getRigth() {
             return rigth;
         }
 
+        /**
+         * Fija o cambia la contraseña
+         **/
         public void setKey(int key) {
             this.key = key;
         }
+
+        /**
+         * retorna el dato de key (se utiliza para los index)
+         **/
         public int getKey(){return  key;}
 
-        public int getValue(){
-            return key;
-        }
+        /**
+         * retorna el nodo con el indice ingresado
+         **/
+
+        /**
+         * añade o cambia la data(información) que tiene el nodo(objecto)
+         **/
         public void setData(Invader Data){
             this.Data=Data;
         }
+
+        /**
+         * retorna la data(información) que tiene el nodo (Objecto)
+         **/
         public Invader getData(){
             return Data;
         }
