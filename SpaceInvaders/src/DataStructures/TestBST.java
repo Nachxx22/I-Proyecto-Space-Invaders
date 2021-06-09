@@ -7,7 +7,7 @@ public class TestBST {
     public static void main(String[] args) {
         BinarySearchTree test = new BinarySearchTree();
         int counter=0;
-        int size=2;
+        int size=6;
         while(counter < size) {
 
 
@@ -19,8 +19,28 @@ public class TestBST {
             test.insert(enemy,counter);
             counter++;
         }
-        test.inOrder(test.root);
-        counter=0;
-        test.getTree(counter);
+        try{
+            int index=0;
+            //test.inOrder(test.root,index);
+            counter=0;
+            System.out.println("Entrada 0");
+            test.getTree(0);
+            System.out.println("Entrada 1");
+            test.getTree(1);
+            System.out.println("Entrada 2");
+            test.getTree(2);
+            System.out.println("Entrada 3");
+            test.getTree(3);
+            System.out.println("Entrada 4");
+            test.getTree(4);
+            System.out.println("Entrada 5");
+            test.getTree(5);
+            System.out.println("Entrada 6");
+            test.getTree(6);
+        }catch (NullPointerException e){
+            System.out.println("Hay un nodo null");
+            e.printStackTrace();
+        }
+
     }
 }

@@ -3,42 +3,15 @@ package DataStructures;
 import Objects.Invader;
 
 
-public class BinarySearchTree implements Arbol{
+public class BinarySearchTree implements Arbol {
     TreeNode root;
     int size;
 
-    public BinarySearchTree(){
+    public BinarySearchTree() {
         root = null;
     }
 
-    /*
-    @Override
-    public void insert(int index, Class value){
-        TreeNode n = new TreeNode(index);
-        n.setData(value);
 
-        if(root == null){
-            root = n;
-        }else{
-            TreeNode aux = root;
-            while(aux != null){
-                n.dad = aux;
-                if(n.key >= aux.key){
-                    aux = aux.rigth;
-                }else{
-                    aux = aux.left;
-                }
-            }
-            if(n.key < n.dad.key){
-                n.dad.left = n;
-            }else{
-                n.dad.rigth = n;
-            }
-        }
-        size++;
-    }
-
-     */
 
     @Override
     public Object get(TreeNode treeNode) {
@@ -46,14 +19,22 @@ public class BinarySearchTree implements Arbol{
     }
 
 
-    public Object inOrder(TreeNode n){
+    public Invader inOrder(TreeNode n,int index){
         System.out.println("Entro en inOrder");
+        System.out.println(n+"    "+index);
         if(n != null){
-            if(root.left==n){
-                return get(n.left);
-            }
-            if(root.rigth==n){
-                return get(n.rigth);
+
+            if(n.getRigth().getKey()==index){
+                System.out.println(n.getRigth().getKey());;
+                System.out.println("retornando datos del nodo derecho");
+                return n.getRigth().getData();}
+            if(n.getLeft().getKey()==index) {
+                System.out.println(n.getLeft().getKey());;
+                System.out.println("retornando datos del nodo izquierdo");
+                return n.getLeft().getData();}
+            if(n.getLeft().getKey() != index || n.getRigth().getKey() != index){
+                System.out.println("Siguente inOrder para seguir buscando");
+                 return inOrder(n.getRigth(),index);
             }
             else{
                 System.out.println("error en los ifs");
@@ -97,30 +78,14 @@ public class BinarySearchTree implements Arbol{
     public Invader getTree(int index) {
         TreeNode First=root;
         if (index==0){
-            System.out.println("Entro en getTree 1");
-            System.out.println(root.getData());
             return root.getData();
         }
-        if (index==1){
-            System.out.println("Entro en getTree 2");
-            System.out.println(root.getLeft().getData());
-            return root.getLeft().getData();
-        }
-        if(index==2){
-            System.out.println("Entro en getTree 3");
-            System.out.println(root.getRigth().getData());
-            return root.getRigth().getData();
-        }
         else if(index%2==0){
-            inOrder(root.left);
-        }
-        else if(index%3==0){
-            inOrder(root.rigth);
+            return inOrder(root,index);
         }
         else{
-            System.out.println("error en los ifs de getTree");
+            return inOrder(root,index);
         }
-        return null;
     }
 
     @Override
@@ -131,12 +96,9 @@ public class BinarySearchTree implements Arbol{
     public void insert(Invader enemy,int key) {
         TreeNode n = new TreeNode(key);
         n.setData(enemy);
-        System.out.println("entro en insert BST");
         if(root == null){
             root = n;
             size++;
-            System.out.println(root);
-            System.out.println("Fijado el root"+""+root+"  es    "+ root.getData());
             return;
         }
         TreeNode First =root;
@@ -145,27 +107,25 @@ public class BinarySearchTree implements Arbol{
             System.out.println(n.getData());
             First.setRigth(n);
             size++;
+            return;
         }
         if(First.left==null){
             System.out.println("añadido root.left");
             System.out.println(n.getData());
             First.setLeft(n);
             size++;
+            return;
         }
-        while(First.rigth != null || First.left!=null ){
-            if (First.rigth !=null){
+        while(First.rigth != null && First.left != null ){
                 First=First.getRigth();
-            }
         }
-        if(First.rigth == null){
-            System.out.println("añadido"+First+"right");
-            First.setRigth(n);
+        if(First.left == null && First.rigth != null){
+            First.setLeft(n);
             size++;
             return;
         }
-        if(First.left==null){
-            System.out.println("añadido"+First+"Left");
-            First.setLeft(n);
+        else if(First.rigth == null ){
+            First.setRigth(n);
             size++;
             return;
         }
@@ -185,7 +145,7 @@ public class BinarySearchTree implements Arbol{
         public Invader Data;
 
         public TreeNode(int key){
-            //this.key = index;
+            this.key = key;
             this.rigth = null;
             this.left = null;
             this.dad = null;
