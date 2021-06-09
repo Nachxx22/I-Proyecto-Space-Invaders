@@ -28,4 +28,6 @@ public abstract class SuperStateMachine {
 	public abstract void draw(Graphics2D g);
 	public abstract void update(double delta);
 	public abstract void init(Canvas canvas);
+
+    public abstract void connectToServer();
 }

@@ -75,6 +75,11 @@ public class Menu extends SuperStateMachine implements KeyListener {
 		canvas.addKeyListener(this);
 	}
 
+	@Override
+	public void connectToServer() {
+
+	}
+
 	/**
 	 *Metodo keyPressed: graba cuando toca tecla enter, comienza juego.
 	 * @param e

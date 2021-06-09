@@ -1,10 +1,15 @@
 package display;
 
+import net.GameServer;
+
 import java.awt.Canvas;
 import java.awt.Graphics2D;
 import java.awt.image.BufferStrategy;
-
-import javax.swing.JFrame;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.net.Socket;
+import javax.swing.*;
 
 
 /**
@@ -30,6 +35,10 @@ public class Display extends Canvas implements Runnable {
 
 		state = new StateMachine(this);
 		state.setState((byte) 0);
+	}
+
+	public void connectToServer (){
+		state.connectToServer();
 	}
 
 	/**
