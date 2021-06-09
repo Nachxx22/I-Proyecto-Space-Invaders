@@ -2,7 +2,7 @@ package DataStructures;
 
 import Objects.Invader;
 
-public interface Arbol<Class> {
+public interface ArbolBST<Class> {
 
     /**
      * Metodo para determinar si un arbol esta o no vacio.

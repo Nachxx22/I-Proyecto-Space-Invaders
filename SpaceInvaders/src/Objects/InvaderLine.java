@@ -1,7 +1,6 @@
 package Objects;
 
-import DataStructures.Arbol;
-import DataStructures.BinarySearchTree;
+import DataStructures.ArbolBST;
 import DataStructures.List;
 import display.Timer;
 
@@ -10,7 +9,7 @@ import display.Timer;
  */
 public abstract class InvaderLine implements Drawable {
 	private List<Invader> enemies;
-	private Arbol<Invader> en;
+	private ArbolBST<Invader> en;
 	private int posX, posY, speed;
 	private Timer timer;
 	private String lineClass;
@@ -26,11 +25,11 @@ public abstract class InvaderLine implements Drawable {
 		this.timer = new Timer();
 	}
 
-	public void setEn(Arbol<Invader> en) {
+	public void setEn(ArbolBST<Invader> en) {
 		this.en = en;
 	}
 
-	public Arbol<Invader> getEn() {
+	public ArbolBST<Invader> getEn() {
 		return en;
 	}
 
@@ -38,8 +37,8 @@ public abstract class InvaderLine implements Drawable {
 		return enemies;
 	}
 
-	public Arbol<Invader>getTreeEnemies(){ return en; }
-	public void setTreeEnemies(Arbol<Invader> en){this.en=en;}
+	public ArbolBST<Invader> getTreeEnemies(){ return en; }
+	public void setTreeEnemies(ArbolBST<Invader> en){this.en=en;}
 
 	public void setEnemies(List<Invader> enemies) {
 		this.enemies = enemies;

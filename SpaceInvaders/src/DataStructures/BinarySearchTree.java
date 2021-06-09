@@ -3,7 +3,7 @@ package DataStructures;
 import Objects.Invader;
 
 
-public class BinarySearchTree implements Arbol {
+public class BinarySearchTree implements ArbolBST {
     TreeNode root;
     int size;
 
@@ -132,11 +132,7 @@ public class BinarySearchTree implements Arbol {
 
     }
 
-
     public class TreeNode {
-        // El nodo no tiene las funciones necesarias además de hacerse la clase en la misma clase del arbol binario lo cual puede causar error
-        // El get value no tiene ningun sentido ya que siempre va a retornar un 0 por que nunca se hace un set de value para el nodo
-        //el nodo simplemente recibe un index como key que no tiene ningún sentido ya que el nodo deberia contener el objecto del Invader
         public TreeNode dad;
         public TreeNode rigth;
         public TreeNode left;
