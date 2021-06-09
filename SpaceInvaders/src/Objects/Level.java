@@ -58,6 +58,8 @@ public class Level implements Drawable {
 				return new BST(280 * 3 / 2, -60, speed, size, this.lvl);
 			}catch (Exception e){e.printStackTrace();
 				System.out.println("Error en el arbol BST");}
+		}else if (index==7){
+			return new ClassG(280*3/2, -60, speed, size, this.lvl);
 		}else {
 			return new Basic(280*3/2, -60, speed, size, this.lvl);
 		}

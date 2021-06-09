@@ -27,26 +27,21 @@ public class BST extends InvaderLine implements Drawable{
 
     @Override
     public void draw(Graphics2D g) {
-        for(int c = 1; c < this.getEnemies().size(); c++){
+        for(int c = 0; c < this.getTreeEnemies().tamaño(); c++){
             System.out.println(this.getTreeEnemies().getTree(c));
             this.getTreeEnemies().getTree(c).draw(g);
         }
     }
-    /*
-    @Override
-    public void paint(Graphics2D g) {
-        for(int c = 0; c < this.getTreeEnemies().tamaño(); c++){
-            this.getTreeEnemies().paint(g);
-        }
-    }
-   
-     */
+
 
     @Override
     public void update(double delta) {
-        for(int c = 0; c < this.getEnemies().size(); c++) {
-            this.getEnemies().get(c).setPosY(this.getEnemies().get(c).getPosY() + this.getSpeed());
-            this.getEnemies().get(c).update(delta);
+        //this.getEnemies().size()
+        for(int c = 0; c < this.getTreeEnemies().tamaño(); c++) {
+            //this.getEnemies().get(c).setPosY(this.getEnemies().get(c).getPosY() + this.getSpeed());
+            this.getTreeEnemies().getTree(c).setPosY(this.getTreeEnemies().getTree(c).getPosY() + this.getSpeed());
+            //this.getEnemies().get(c).update(delta);
+            this.getTreeEnemies().getTree(c).update(delta);
         }
     }
 

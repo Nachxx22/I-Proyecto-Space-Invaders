@@ -158,7 +158,7 @@ public class Game extends SuperStateMachine implements KeyListener, MouseListene
 			level = new Level(levelCounter);
 		}
 		// Destruir enemigos
-		for(int i = 0; i < level.getCurrent().getEnemies().size(); i++) {
+		for(int i = 0; i < level.getCurrent().getEnemies().size(); i++)  {
 			int b = 0;
 			if(level.getCurrent().getEnemies().get(i).getPosY() >= 600 - level.getCurrent().getEnemies().get(i).getHeight()) {
 
