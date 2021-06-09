@@ -1,6 +1,8 @@
 package Objects;
 
+
 import java.awt.Graphics2D;
+import java.io.IOException;
 import java.util.Random;
 
 /**
@@ -25,24 +27,43 @@ public class Level implements Drawable {
 	 */
 	public InvaderLine createNewLine() {
 		Random rand = new Random();
-		int index = rand.nextInt(6);
+		//La linea de abajo es la original y la que sirve
+		//int index = rand.nextInt(6);
+		//int index= rand.nextInt(7);
+		int index=6;
 		int size = 6;
 		++speed;
 		if(index == 0) {
+			System.out.println("Clase Basic");
 			return new Basic(280*3/2, -60, speed, size, this.lvl);
 		} else if(index == 1) {
+			System.out.println("ClaseA");
 			return new ClassA(280*3/2, -60, speed, size, this.lvl);
 		} else if(index == 2) {
+			System.out.println("ClaseB");
 			return new ClassB(280*3/2, -60, speed, size, this.lvl);
 		} else if(index == 3) {
+			System.out.println("ClaseC");
 			return new ClassC(280*3/2, -60, speed, size, this.lvl);
 		} else if(index == 4) {
+			System.out.println("Clase D");
 			return new ClassD(280*3/2, -60, speed, size, this.lvl);
 		} else if(index == 5) {
+			System.out.println("Clase E");
 			return new ClassE(280*3/2, -60, speed, size, this.lvl);
-		} else {
+		}
+		else if(index == 6) {
+			System.out.println("Clase BST");
+			try {
+				return new BST(280 * 3 / 2, -60, speed, size, this.lvl);
+			}catch (Exception e){e.printStackTrace();
+				System.out.println("Error en el arbol BST");}
+		}else if (index==7){
+			return new ClassG(280*3/2, -60, speed, size, this.lvl);
+		}else {
 			return new Basic(280*3/2, -60, speed, size, this.lvl);
 		}
+		return null;
 	}
 
 	public InvaderLine getCurrent() {

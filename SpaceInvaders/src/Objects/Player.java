@@ -3,6 +3,10 @@ package Objects;
 import java.awt.Graphics2D;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.net.Socket;
 
 import DataStructures.SimplyLinkedList;
 import display.Timer;
