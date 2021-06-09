@@ -99,28 +99,31 @@ public class BinarySearchTree implements ArbolBST {
         }
         TreeNode First =root;
         if(First.rigth == null){
-            System.out.println("añadido root.right");
-            System.out.println(n.getData());
+            n.getData().setPosY(n.getData().getPosY()+90);
+            n.getData().setPosX(420+100);
             First.setRigth(n);
             size++;
             return;
         }
         if(First.left==null){
-            System.out.println("añadido root.left");
-            System.out.println(n.getData());
+            n.getData().setPosY(n.getData().getPosY()+90);
+            n.getData().setPosX(420-200);
             First.setLeft(n);
             size++;
             return;
         }
         while(First.rigth != null && First.left != null ){
                 First=First.getRigth();
+                n.getData().setPosY(n.getData().getPosY()+110);
         }
         if(First.left == null && First.rigth != null){
+            n.getData().setPosX(n.getData().getPosX()-100);
             First.setLeft(n);
             size++;
             return;
         }
         else if(First.rigth == null ){
+            n.getData().setPosX(n.getData().getPosX()+100);
             First.setRigth(n);
             size++;
             return;
